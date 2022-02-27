@@ -1,4 +1,4 @@
-# mtu_instructor_review
+# huskyreview
 
 ## Project setup
 ```
