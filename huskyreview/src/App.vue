@@ -1,15 +1,16 @@
 <template>
-  <div>
-    <div class = "container">
-      <a href="#">Create Review</a>
-    </div>
-  </div>
+  <Nav />
 </template>
 
 <script>
   import axios from 'axios';
+  import Nav from './components/Nav.vue'
 
   export default {
+    name: 'App',
+    components: {
+      Nav,
+    },
     data() {
       return {
         baseApiURL: 'http://localhost:4000/api',
