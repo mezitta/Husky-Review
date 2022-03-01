@@ -13,6 +13,5 @@
 <style>
     .review{
         color: red;
-        font-size: 50px;
     }
 </style>

@@ -1,7 +1,9 @@
 <template>
-  <div class="app">
+  <div class="content">
     <Nav />
-    <div><router-view /></div>
+    <div class="app">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -45,9 +47,15 @@
     padding: 0;
   }
 
+  .content {
+    font-family: helvetica;
+  }
+
   .app {
     min-height: 100vh;
+    margin: 0;
     position: relative;
     background-color: #5f5e5e;
+    display: block;
   }
 </style>

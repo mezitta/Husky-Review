@@ -32,7 +32,7 @@
         background-color: white;
         z-index: 99;
         width: 100%;
-        /* position: fixed; */
+        position: fixed top;
         transition: 0.3s ease all;
         color: #fff;
     }
@@ -47,5 +47,9 @@
         @media(min-width: 1140px) {
             max-width: 1140px;
         }
+    }
+
+    li a {
+        text-decoration: none;
     }
 </style>
