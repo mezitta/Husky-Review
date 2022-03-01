@@ -2,7 +2,8 @@
     <div class="navbar">
         <nav>
             <div class="branding">
-                <img src="" alt="">
+                <img src="../assets/logo.png" alt="" width="50" height="50" />
+                asdf
             </div>
             <ul v-show="!mobile" class="navigation">
                 <li><router-link to="/">Home</router-link></li>
@@ -52,4 +53,6 @@
     li a {
         text-decoration: none;
     }
+
+    
 </style>
