@@ -1,10 +1,15 @@
 <template>
-  <Nav />
+  <div class="content">
+    <Nav />
+    <div class="app">
+      <router-view />
+    </div>
+  </div>
 </template>
 
 <script>
   import axios from 'axios';
-  import Nav from './components/Nav.vue'
+  import Nav from "./components/Nav"
 
   export default {
     name: 'App',
@@ -38,9 +43,19 @@
 <style>
   * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
-  body {
-    background: grey;
+  .content {
+    font-family: helvetica;
+  }
+
+  .app {
+    min-height: 100vh;
+    margin: 0;
+    position: relative;
+    background-color: #5f5e5e;
+    display: block;
   }
 </style>
