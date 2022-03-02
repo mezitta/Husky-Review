@@ -1,24 +1,10 @@
 <template>
-    <div class="navbar">
-        <nav>
-            <div class="branding">
-                <img src="../assets/logo.png" alt="" width="50" height="50" />
-                asdf
-            </div>
-            <ul v-show="!mobile" class="navigation">
-                <li><router-link to="/">Home</router-link></li>
-                <li><router-link to="/review">Create Review</router-link></li>
-            </ul>
-            <!-- <div class="icon">
-                <i @click="toggleMobileNav" v-show="mobile" class="far fa-bars" :class="{'icon-active': mobileNav }"></i>
-            </div>
-            <transition name="mobile-nav">
-                <ul v-show="mobileNav" class="dropdown-nav">
-                <li><router-link class="link" :to="{name: 'Home'}">Home</router-link></li>
-                <li><router-link class="link" :to="{name: ''}">Create Review</router-link></li>
-            </ul>
-            </transition> -->
-        </nav>
+    <div class="container-fluid nav">
+        <div class="col-sm navCol" id="branding">
+            <img src="../assets/logo.png" alt="" width="50" height="50" />
+        </div>
+        <div class="col-sm navCol"><router-link to="/">Home</router-link></div>
+        <div class="col-sm navCol"><router-link to="/review">Create Review</router-link></div>
     </div>
 </template>
 
@@ -29,30 +15,29 @@
 </script>
 
 <style scoped>
-    .navbar {
-        background-color: white;
-        z-index: 99;
-        width: 100%;
-        position: fixed top;
-        transition: 0.3s ease all;
-        color: #fff;
-    }
-
-    nav {
+    .navCol {
         display: flex;
-        flex-direction: row;
-        padding: 12px 0;
-        transition: 0.3s ease all;
-        width: 90%;
-        margin: 0 auto;
-        @media(min-width: 1140px) {
-            max-width: 1140px;
-        }
+        align-items: center;
+        background-color: lightblue;
     }
 
-    li a {
+    .navCol:nth-of-type(1){
+        padding: 0 0 0 20px;
+    }
+
+    .navCol:nth-of-type(n+2){
+        justify-content: center;
+    }
+
+    .navCol a{
         text-decoration: none;
+        color: green;
     }
 
-    
+    .nav {
+        background-color: green;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
 </style>
