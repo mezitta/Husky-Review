@@ -3,8 +3,8 @@
         <div class="col-sm navCol" id="branding">
             <img src="../assets/logo.png" alt="" width="50" height="50" />
         </div>
-        <div class="col-sm navCol"><router-link to="/">Home</router-link></div>
-        <div class="col-sm navCol"><router-link to="/review">Create Review</router-link></div>
+        <div class="col navCol"><router-link to="/">Home</router-link></div>
+        <div class="col navCol"><router-link to="/review">Create Review</router-link></div>
     </div>
 </template>
 
