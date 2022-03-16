@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid nav">
         <div class="col-sm navCol" id="branding">
-            <img src="../assets/logo.png" alt="" width="50" height="50" />
+            <img src="../assets/huskylogoblack.png" alt="" width="40" height="40" />
         </div>
         <div class="col navCol"><router-link to="/">Home</router-link></div>
         <div class="col navCol"><router-link to="/review">Create Review</router-link></div>
@@ -15,10 +15,12 @@
 </script>
 
 <style scoped>
+    @import '../assets/main.css';
+
     .navCol {
         display: flex;
         align-items: center;
-        background-color: lightblue;
+        background-color: rgb(29, 29, 29);
     }
 
     .navCol:nth-of-type(1){
@@ -31,13 +33,13 @@
 
     .navCol a{
         text-decoration: none;
-        color: green;
+        color: var(--husky-yellow);
     }
 
     .nav {
-        background-color: green;
+        background-color: rgb(29, 29, 29);
         box-sizing: border-box;
-        padding: 0;
+        padding: 0.5em;
         margin: 0;
     }
 </style>
