@@ -22,6 +22,15 @@
         name: 'Home-page',
         components: {}
     };
+
+    function getWindowSize(){
+        let w = document.documentElement.clientWidth;
+        let h = document.documentElement.clientHeight;
+        
+        console.log(`width ${w}, height ${h}`);
+    }
+
+    window.addEventListener('resize', getWindowSize)
 </script>
 
 <style>
@@ -32,6 +41,7 @@
 
     .shareFont {
         font-size: 2em;
+        font-weight: bold;
     }
 
     #createComp {
@@ -40,15 +50,17 @@
 
     #makeHomeReview {
         width: 100%;
-        padding: 1em;
         background-color: var(--husky-yellow);
+        font-size: 1.2rem;
+        font-weight: bold;
         color: var(--dark-back);
         border: none;
+        border-radius: 40px;
         transition: all 0.3s;
     }
 
     #makeHomeReview:hover {
         color: white;
-        border-radius: 10px;
+        opacity: 0.8;
     }
 </style>
