@@ -17,7 +17,7 @@ error => {
     }
 )
 
-const testtoEndPoint = require('../backend/routes/test.route')
+const reviewtoEndPoint = require('../backend/routes/review.route')
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 
 //API
-app.use('/api', testtoEndPoint)
+app.use('/api', reviewtoEndPoint)
 
 //Create port
 const port = process.env.PORT || 4000;
