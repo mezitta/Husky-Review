@@ -54,8 +54,13 @@
   .app {
     min-height: 100vh;
     margin: 0;
+    padding: 0;
     position: relative;
-    background-color: #5f5e5e;
+    background-color: var(--main-back);
     display: block;
+    /* background-image: url(./assets/navbackground.svg);
+    background-position: top right;
+    background-size: 100% 100%;
+    background-repeat: no-repeat; */
   }
 </style>
