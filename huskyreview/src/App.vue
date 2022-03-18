@@ -2,6 +2,7 @@
   <div class="content">
     <Nav />
     <div class="app">
+      <card />
       <router-view />
     </div>
   </div>
@@ -10,11 +11,13 @@
 <script>
   import axios from 'axios';
   import Nav from "./components/Nav"
+  import card from "./components/Card"
 
   export default {
     name: 'App',
     components: {
       Nav,
+      card,
     },
     data() {
       return {
