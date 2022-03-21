@@ -15,7 +15,7 @@ reviewRoute.route('/').get((req, res) => {
     })
 })
 
-// TODO: Insert incoming data into database.
+// TODO: Require not-null fields.
 reviewRoute.route('/add-review').post((req, res) => {
     ReviewModel.create(req.body, (error, data) => {
         if (error) {
@@ -27,7 +27,7 @@ reviewRoute.route('/add-review').post((req, res) => {
 })
 
 // TODO: Prevent updating anything beyond like/dislike tallies.
-reviewRoute.route('/update-review/:id').put((req, res) => {
+reviewRoute.route('/update-review/:id').patch((req, res) => {
     ReviewModel.findByIdAndUpdate(req.params.id, req.body, (error, data) => {
         if (error) {
             return next(error)
