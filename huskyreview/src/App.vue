@@ -3,7 +3,6 @@
     <Nav />
     <div class="app">
       <router-view />
-      <card />
     </div>
   </div>
 </template>
@@ -11,13 +10,11 @@
 <script>
   import axios from 'axios';
   import Nav from "./components/Nav"
-  import card from "./components/Card"
 
   export default {
     name: 'App',
     components: {
       Nav,
-      card,
     },
     data() {
       return {

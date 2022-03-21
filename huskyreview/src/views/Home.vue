@@ -14,13 +14,18 @@
                 </div>
             </div>
         </div>
+        <card />
     </div>
 </template>
 
 <script>
+    import card from "../components/Card"
+    
     export default {
         name: 'Home-page',
-        components: {}
+        components: {
+            card
+        }
     };
 </script>
 
