@@ -2,8 +2,8 @@
   <div class="content">
     <Nav />
     <div class="app">
-      <card />
       <router-view />
+      <card />
     </div>
   </div>
 </template>
