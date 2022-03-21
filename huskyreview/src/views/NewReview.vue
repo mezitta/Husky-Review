@@ -1,11 +1,11 @@
 <template>
     <div class="container-fluid" id="formContent">
-        <form action="">
+        <form v-on:submit.prevent="submitForm">
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
                 <!-- <div class="content"> -->
                 <!-- <label for="">Class Name</label><br> -->
-                <input type="text" placeholder="Class Name" required v-model="class_name">
+                <input type="text" placeholder="Class Name" required v-model="addClassName">
                 <!-- </div> -->
             </div>
         </div>
@@ -13,7 +13,7 @@
             <div class="col-sm-5 d-flex justify-content-center">
                 <!-- <div class="content"> -->
                 <!-- <label for="">Class ID</label><br> -->
-                <input type="text" placeholder="Class ID" required v-model="class_id">
+                <input type="text" placeholder="Class ID" required v-model="addClassId">
                 <!-- </div> -->
             </div>
         </div>
@@ -21,7 +21,7 @@
             <div class="col-sm-5 d-flex justify-content-center">
                 <!-- <div class="content"> -->
                 <!-- <label for="">Professor</label><br> -->
-                <input type="text" placeholder="Professor" required v-model="prof">
+                <input type="text" placeholder="Professor" required v-model="addProf">
                 <!-- </div> -->
             </div>
         </div>
@@ -29,7 +29,7 @@
             <div class="col-sm-5 d-flex justify-content-center">
                 <!-- <div class="content"> -->
                 <!-- <label for="">Title</label><br> -->
-                <input type="text" placeholder="Title" required v-model="title">
+                <input type="text" placeholder="Title" required v-model="addtTitle">
                 <!-- </div> -->
             </div>
         </div>
@@ -37,7 +37,7 @@
             <div class="col-sm-5 d-flex justify-content-center">
                 <!-- <div class="content"> -->
                 <!-- <label for="">Comments</label><br> -->
-                <textarea rows="5" cols="25" id="reviewComments" placeholder="Comments" v-model="body"></textarea>
+                <textarea rows="5" cols="25" id="reviewComments" placeholder="Comments" v-model="addBody"></textarea>
                 <!-- </div> -->
             </div>
         </div>
@@ -45,7 +45,7 @@
             <div class="col-sm-5 d-flex justify-content-center">
                 <!-- <div class="content"> -->
                 <!-- <label for="">Rating</label><br> -->
-                <select required v-model="rating" >
+                <select required v-model="addRating" >
                     <option value="" disabled selected> Select Rating</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -59,7 +59,7 @@
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
                 <!-- <div class="content"> -->
-                <button type="button" class="btn btn-primary" id="makeReview">Create Review</button>
+                <button type="submit" class="btn btn-primary" id="makeReview">Create Review</button>
                 <!-- </div> -->
             </div>
         </div>
@@ -68,7 +68,7 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 
 export default {
     name: 'New-Review',
@@ -83,6 +83,23 @@ export default {
             class_name: '',
             body: '',
             rating: ''
+        }
+    },
+    methods: {
+        submitForm() {
+            axios.post('/api/add-review', {
+                title:  this.addTitle,
+                prof:   this.addProf,
+                class_id:   this.addClassId,
+                class_name: this.addClassName,
+                body:   this.addBody,
+                rating: this.addRating
+            }).then(response => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error)
+            })
         }
     }
 };
