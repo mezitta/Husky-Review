@@ -1,4 +1,5 @@
 <template>
+    <img src='../assets/huskyreivewlogo.svg'>
     <div class="container-fluid home">
         <div class="row d-flex justify-content-center makeReview">
             <div class="col-6" id="createComp">
