@@ -1,7 +1,8 @@
 # huskyreview
 
 ## Node Version Manager
-[Installation](https://github.com/nvm-sh/nvm#manual-install)
+[Install](https://github.com/nvm-sh/nvm#manual-install)
+
 [Use Latest LTS](https://github.com/nvm-sh/nvm#long-term-support)
 
 ## Project setup
