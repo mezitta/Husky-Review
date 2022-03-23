@@ -20,7 +20,7 @@
     .navCol {
         display: flex;
         align-items: center;
-        height: 5em;
+        height: 4.5em;
         /* background-color: rgb(29, 29, 29); */
         
     }
