@@ -24,22 +24,26 @@
                 body
             </div>
         </div>
-        <div class="row justify-content-end bottom-row-margin">
+        <div class="row justify-content-end bottom-row-margin top-row-margin">
             <div class="col-3">
                 <p class="text-end">
                     credibility
                 </p>
             </div>
-            <div class="col-1">
-                <img src="../assets/up.png" alt="" width="15" height="15" />
+            <div class="col-1 text-center">
+                <button type="button" class="btn btn-* btn-sm">
+                    <i class="fa-solid fa-thumbs-up"></i>
+                </button>
             </div>
-            <div class="col-1">
+            <div class="col-1  text-center">
                 0
             </div>
-            <div class="col-1">
-                <img src="../assets/down.png" alt="" width="15" height="15" />
+            <div class="col-1  text-center">
+                <button type="button" class="btn btn-* btn-sm">
+                    <i class="fa-solid fa-thumbs-down"></i>
+                </button>
             </div>
-            <div class="col-1">
+            <div class="col-1  text-center">
                 0
             </div>
         </div>
