@@ -3,48 +3,31 @@
         <form v-on:submit.prevent="submitForm">
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
-                <!-- <div class="content"> -->
-                <!-- <label for="">Class Name</label><br> -->
                 <input type="text" placeholder="Class Name" required v-model="addClassName">
-                <!-- </div> -->
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
-                <!-- <div class="content"> -->
-                <!-- <label for="">Class ID</label><br> -->
                 <input type="text" placeholder="Class ID" required v-model="addClassId">
-                <!-- </div> -->
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
-                <!-- <div class="content"> -->
-                <!-- <label for="">Professor</label><br> -->
                 <input type="text" placeholder="Professor" required v-model="addProf">
-                <!-- </div> -->
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
-                <!-- <div class="content"> -->
-                <!-- <label for="">Title</label><br> -->
-                <input type="text" placeholder="Title" required v-model="addtTitle">
-                <!-- </div> -->
+                <input type="text" placeholder="Title" required v-model="addTitle">
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
-                <!-- <div class="content"> -->
-                <!-- <label for="">Comments</label><br> -->
                 <textarea rows="5" cols="25" id="reviewComments" placeholder="Comments" v-model="addBody"></textarea>
-                <!-- </div> -->
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
-                <!-- <div class="content"> -->
-                <!-- <label for="">Rating</label><br> -->
                 <select required v-model="addRating" >
                     <option value="" disabled selected> Select Rating</option>
                     <option value="1">1</option>
@@ -53,14 +36,11 @@
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-                <!-- </div> -->
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
-                <!-- <div class="content"> -->
                 <button type="submit" class="btn btn-primary" id="makeReview">Create Review</button>
-                <!-- </div> -->
             </div>
         </div>
         </form>
@@ -77,12 +57,12 @@ export default {
     },
     data() {
         return {
-            title: '',
-            prof: '',
-            class_id: '',
-            class_name: '',
-            body: '',
-            rating: ''
+            addTitle: '',
+            addProf: '',
+            addClassId: '',
+            addClassName: '',
+            addBody: '',
+            addRating: ''
         }
     },
     methods: {
