@@ -1,5 +1,9 @@
 <template>
+    
     <div class="container-fluid home">
+        <div class="row d-flex justify-content-center logoRow">
+            <img src='../assets/huskyreivewlogo.svg'>
+        </div>
         <div class="row d-flex justify-content-center makeReview">
             <div class="col-6" id="createComp">
                 <h2 class="shareFont">Share Your Experience</h2>
@@ -41,9 +45,13 @@
         margin-bottom: 2vh;
     }
 
+    .logoRow {
+        padding: 1.5em 3em 0 3em;
+    }
+
     #createComp {
         text-align: center;
-        margin-top: 6vh;
+        /* margin-top: 3vh; */
     }
 
     #makeHomeReview {
@@ -76,12 +84,20 @@
             font-weight: bold;
             margin-bottom: 2vh;
         }
+
+        .logoRow {
+            padding: 2em;
+        }
     }
 
     @media only screen and (min-width: 1300px) {
         .shareFont {
             font-size: 3em;
             margin-bottom: 3vh;
+        }
+
+        .logoRow {
+            padding: 1.5em 30em 0 30em;
         }
     }
 
