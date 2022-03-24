@@ -1,6 +1,7 @@
 <template>
     
     <div class="container-fluid home">
+        <Filter/>
         <div class="row d-flex justify-content-center logoRow">
             <img src='../assets/huskyreivewlogo.svg'>
         </div>
@@ -24,11 +25,13 @@
 
 <script>
     import card from "../components/Card"
+    import Filter from "../components/Filter"
     
     export default {
         name: 'Home-page',
         components: {
-            card
+            card,
+            Filter
         }
     };
 </script>
