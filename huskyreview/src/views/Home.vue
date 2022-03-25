@@ -5,7 +5,7 @@
         <div class="row d-flex justify-content-center logoRow">
             <img src='../assets/huskyreivewlogo.svg'>
         </div>
-        <Filter/>
+        
         <div class="row d-flex justify-content-center makeReview">
             <div class="col-6" id="createComp">
                 <h2 class="shareFont">Share Your Experience</h2>
@@ -20,6 +20,7 @@
                 </div>
             </div>
         </div>
+        <Filter/>
         <card />
     </div>
 </template>

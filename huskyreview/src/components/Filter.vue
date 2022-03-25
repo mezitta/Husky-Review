@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="row row-cols-auto  justify-content-center bottomBorder topBorder">
+    <div class="row row-cols-auto  justify-content-center filterBorder">
       
       <div class="col">
         <h5 class="text-center text-dark">
@@ -39,7 +39,7 @@
           <div class="form-outline">
             <input type="search" id="form1" class="form-control" placeholder="Search"/>
           </div>
-          <button type="button" class="btn btn-outline-warning">
+          <button type="button" class="btn btn-outline-warning search">
               Search
             </button>
         </div>
@@ -54,15 +54,41 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+@import '../assets/main.css';
 
-.bottomBorder {
+.CID, .Prof, .dept
+{
+  background-color: var(--husky-yellow);
+  border: none;
+  transition: all 0.3s;
+}
+
+.CID:hover, .Prof:hover, .dept:hover {
+  color: white;
+  opacity: 0.95;
+}
+
+.search {
+  border-color: var(--husky-yellow);
+  color: var(--husky-yellow);
+}
+
+.search:hover {
+  background-color: var(--husky-yellow);
+  color: black;
+}
+
+.filterBorder {
   padding-bottom: 5px;
   border-bottom: 5px solid rgb(0, 0, 0);
-}
-
-.topBorder {
   padding-top: 5px;
   border-top: 5px solid rgb(0, 0, 0);
+  width: 100%;
 }
+
+/* .topBorder {
+  padding-top: 5px;
+  border-top: 5px solid rgb(0, 0, 0);
+} */
 </style>
