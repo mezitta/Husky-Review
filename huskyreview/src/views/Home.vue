@@ -1,9 +1,11 @@
 <template>
     
     <div class="container-fluid home">
+        
         <div class="row d-flex justify-content-center logoRow">
             <img src='../assets/huskyreivewlogo.svg'>
         </div>
+        
         <div class="row d-flex justify-content-center makeReview">
             <div class="col-6" id="createComp">
                 <h2 class="shareFont">Share Your Experience</h2>
@@ -18,17 +20,20 @@
                 </div>
             </div>
         </div>
+        <Filter/>
         <card />
     </div>
 </template>
 
 <script>
     import card from "../components/Card"
+    import Filter from "../components/Filter"
     
     export default {
         name: 'Home-page',
         components: {
-            card
+            card,
+            Filter
         }
     };
 </script>

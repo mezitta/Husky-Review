@@ -10,6 +10,8 @@ let reviewSchema = new Schema({
     prof: String, // professor name
     rating: Number,
     title: String
+}, {
+    collection: 'reviews'
 })
 
 module.exports = mongoose.model('review', reviewSchema);
