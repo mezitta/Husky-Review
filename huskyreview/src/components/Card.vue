@@ -19,7 +19,7 @@
                 prof name
             </div>
         </div>
-        <div class="row bottom-margin cardRow">
+        <div class="row bottom-margin cardRow bodyText">
             <div class="col">
                 body
             </div>
@@ -77,6 +77,10 @@ export default {
         .card {
             width: 30%;
         }
+    }
+
+    .bodyText {
+        height: 60%;
     }
 
     .cardRow {

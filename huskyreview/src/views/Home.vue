@@ -1,21 +1,23 @@
 <template>
     
     <div class="container-fluid home">
-        
-        <div class="row d-flex justify-content-center logoRow">
-            <img src='../assets/huskyreivewlogo.svg'>
-        </div>
-        
-        <div class="row d-flex justify-content-center makeReview">
-            <div class="col-6" id="createComp">
-                <h2 class="shareFont">Share Your Experience</h2>
-                <div class="row d-flex makeReview">
-                    <div class="col">
-                        <router-link to="/review">
-                            <button type="button" class="btn btn-primary" id="makeHomeReview">
-                                Create Review
-                            </button>
-                        </router-link>
+        <div class="topPage">
+            <Nav />
+            <div class="row d-flex justify-content-center logoRow">
+                <img src='../assets/huskyreivewlogo.svg'>
+            </div>
+
+            <div class="row d-flex justify-content-center makeReview">
+                <div class="col-6" id="createComp">
+                    <h2 class="shareFont">Share Your Experience</h2>
+                    <div class="row d-flex makeReview">
+                        <div class="col">
+                            <router-link to="/review">
+                                <button type="button" class="btn btn-primary" id="makeHomeReview">
+                                    Create Review
+                                </button>
+                            </router-link>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -28,20 +30,46 @@
 <script>
     import card from "../components/Card"
     import Filter from "../components/Filter"
+    import Nav from "../components/Nav"
     
     export default {
         name: 'Home-page',
         components: {
             card,
-            Filter
+            Filter,
+            Nav
         }
     };
 </script>
 
-<style>
+<style scoped>
+    @import '../assets/main.css';
+    
     .home a{
         text-decoration: none;
-        color: white
+    }
+
+    .home {
+        padding: 0;
+    }
+
+    .topPage {
+        background-color: var(--main-back);
+        background-image: url('../assets/mtu_campus1.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        /* opacity: 0.5; */
+    }
+
+    .topPage::before {
+        /* content: "";
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        background-color: rgba(0,0,0,0.25); */
     }
 
     .shareFont {
@@ -54,6 +82,10 @@
         padding: 1.5em 3em 0 3em;
     }
 
+    .makeReview {
+        margin: 0;
+    }
+
     #createComp {
         text-align: center;
         /* margin-top: 3vh; */
@@ -62,6 +94,7 @@
     #makeHomeReview {
         width: 100%;
         max-width: 500px;
+        margin-bottom: 10%;
         background-color: var(--husky-yellow);
         font-size: 1.8rem;
         font-weight: bold;
@@ -91,7 +124,8 @@
         }
 
         .logoRow {
-            padding: 2em;
+            padding: 2em 2em 0.5em 2em;
+            margin-bottom: 0;
         }
     }
 

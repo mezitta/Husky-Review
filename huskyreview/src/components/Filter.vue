@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid filter">
     <div class="row row-cols-auto justify-content-center  align-items-center filterBorder">
       
       <div class="col">
@@ -57,6 +57,10 @@ export default {
 <style scoped>
 @import '../assets/main.css';
 
+.filter {
+  padding: 0;
+}
+
 .CID, .Prof, .dept
 {
   background-color: var(--husky-yellow);
@@ -84,7 +88,14 @@ export default {
   border-bottom: 5px solid rgb(0, 0, 0);
   padding-top: 5px;
   border-top: 5px solid rgb(0, 0, 0);
+  margin-left: 0;
   width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  h5 {
+    margin: 0;
+  }
 }
 
 /* .topBorder {
