@@ -10,27 +10,29 @@
 
       <div class="col">
         <div class="btn-group" role="group">
-        <button
-          type="button"
-          class="btn btn-warning CID"
-          data-bs-toggle="button"
-        >
-          Class ID
-        </button>
-        <button
-          type="button"
-          class="btn btn-warning Prof"
-          data-bs-toggle="button"
-        >
-          Professor
-        </button>
-        <button
-          type="button"
-          class="btn btn-warning dept"
-          data-bs-toggle="button"
-        >
-          Deptartment
-        </button>
+          <button
+            type="button"
+            class="btn btn-warning CID"
+            data-bs-toggle="button"
+          >
+            Class ID
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-warning Prof"
+            data-bs-toggle="button"
+          >
+            Professor
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-warning dept"
+            data-bs-toggle="button"
+          >
+            Deptartment
+          </button>
       </div>
       </div>
 
