@@ -62,16 +62,6 @@
         /* opacity: 0.5; */
     }
 
-    .topPage::before {
-        /* content: "";
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        bottom: 0px;
-        left: 0px;
-        background-color: rgba(0,0,0,0.25); */
-    }
-
     .shareFont {
         font-size: 2.5em;
         font-weight: bold;
