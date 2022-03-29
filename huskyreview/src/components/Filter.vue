@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="row row-cols-auto  justify-content-center filterBorder">
+    <div class="row row-cols-auto justify-content-center  align-items-center filterBorder">
       
       <div class="col">
         <h5 class="text-center text-dark">
