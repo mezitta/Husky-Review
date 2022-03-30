@@ -10,7 +10,7 @@
 npm install
 ```
 
-## Launch full stack (at least once to set IP address)
+### Launch full stack (at least once to set IP address)
 ```
 ./huskyreview.sh
 ```
