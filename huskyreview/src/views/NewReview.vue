@@ -50,6 +50,7 @@
 
 <script>
 import axios from 'axios';
+import { destination } from '../destination';
 import Nav from "../components/Nav"
 
 export default {
@@ -69,7 +70,7 @@ export default {
     },
     methods: {
         submitForm() {
-            axios.post('http://localhost:4000/api/add-review', {
+            axios.post('http://' + destination.ip + ':4000/api/add-review', {
                 title:  this.addTitle,
                 prof:   this.addProf,
                 class_id:   this.addClassId,

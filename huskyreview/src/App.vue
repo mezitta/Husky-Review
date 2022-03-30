@@ -9,6 +9,7 @@
 
 <script>
   import axios from 'axios';
+  import { destination } from './destination';
   // import Nav from "./components/Nav"
 
   export default {
@@ -18,7 +19,7 @@
     },
     data() {
       return {
-        baseApiURL: 'http://localhost:4000/api',
+        baseApiURL: 'http://' + destination.ip + ':4000/api',
         review: {
           name: ''
         },

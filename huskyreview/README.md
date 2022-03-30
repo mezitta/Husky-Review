@@ -10,6 +10,11 @@
 npm install
 ```
 
+## Launch full stack (at least once to set IP address)
+```
+./huskyreview.sh
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve

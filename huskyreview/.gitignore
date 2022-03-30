@@ -2,6 +2,8 @@
 node_modules
 /dist
 
+# Server IP address
+destination.js
 
 # local env files
 .env.local
