@@ -1,6 +1,6 @@
 <template>
     <div class="container card" >
-        <div class="row justify-content-end bottom-margin top-row-margin">
+        <div class="row justify-content-end bottom-margin top-row-margin cardRow">
             <div class="col">
                 title
             </div>
@@ -8,7 +8,7 @@
                 rating
             </div>
         </div>
-        <div class="row bottom-margin">
+        <div class="row bottom-margin cardRow">
             <div class="col right-border">
                 class name
             </div>
@@ -19,27 +19,29 @@
                 prof name
             </div>
         </div>
-        <div class="row bottom-margin">
+        <div class="row bottom-margin cardRow bodyText">
             <div class="col">
                 body
             </div>
         </div>
-        <div class="row justify-content-end bottom-row-margin">
-            <div class="col-3">
-                <p class="text-end">
+        <div class="row justify-content-end align-items-center bottom-row-margin top-row-margin cardRow">
+            <div class="col-3 credit">
                     credibility
-                </p>
             </div>
-            <div class="col-1">
-                <img src="../assets/up.png" alt="" width="15" height="15" />
+            <div class="col-1 text-center rating">
+                <button type="button" class="btn btn-* btn-sm">
+                    <i class="fa-solid fa-thumbs-up"></i>
+                </button>
             </div>
-            <div class="col-1">
+            <div class="col-1 text-center rating">
                 0
             </div>
-            <div class="col-1">
-                <img src="../assets/down.png" alt="" width="15" height="15" />
+            <div class="col-1 text-center rating">
+                <button type="button" class="btn btn-* btn-sm">
+                    <i class="fa-solid fa-thumbs-down"></i>
+                </button>
             </div>
-            <div class="col-1">
+            <div class="col-1  text-center rating">
                 0
             </div>
         </div>
@@ -54,8 +56,47 @@ export default {
 
 <style scoped>
 
+    .row {
+        padding: 0.2em;
+    }
+
     .card {
         background-color: rgb(255,255,255);
+        border-radius: 20px;
+        height: 300px;
+        
+    }
+
+    @media only screen and (max-width: 600px) {
+        .card {
+            height: 200px;
+        }
+    }
+
+    @media only screen and (min-width: 1300px) {
+        .card {
+            width: 30%;
+        }
+    }
+
+    .bodyText {
+        height: 60%;
+    }
+
+    .cardRow {
+        color: blue;
+        font-size: 0.85em;
+    }
+
+    .credit {
+        padding: 0;
+        text-align: end;
+    }
+
+    .rating {
+        padding: 0.2em;
+        max-width: 25px;
+        margin-right: 10px;
     }
 
     .right-border {

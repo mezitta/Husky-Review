@@ -1,4 +1,5 @@
 <template>
+    <Nav />
     <div class="container-fluid" id="formContent">
         <form v-on:submit.prevent="submitForm">
         <div class="row justify-content-center">
@@ -49,11 +50,12 @@
 
 <script>
 import axios from 'axios';
+import Nav from "../components/Nav"
 
 export default {
     name: 'New-Review',
     components:{
-        
+        Nav
     },
     data() {
         return {

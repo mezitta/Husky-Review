@@ -1,6 +1,6 @@
 <template>
-  <div class="container-fluid">
-    <div class="row row-cols-auto  justify-content-center filterBorder">
+  <div class="container-fluid filter">
+    <div class="row row-cols-auto justify-content-center  align-items-center filterBorder">
       
       <div class="col">
         <h5 class="text-center text-dark">
@@ -10,27 +10,29 @@
 
       <div class="col">
         <div class="btn-group" role="group">
-        <button
-          type="button"
-          class="btn btn-warning CID"
-          data-bs-toggle="button"
-        >
-          Class ID
-        </button>
-        <button
-          type="button"
-          class="btn btn-warning Prof"
-          data-bs-toggle="button"
-        >
-          Professor
-        </button>
-        <button
-          type="button"
-          class="btn btn-warning dept"
-          data-bs-toggle="button"
-        >
-          Deptartment
-        </button>
+          <button
+            type="button"
+            class="btn btn-warning CID"
+            data-bs-toggle="button"
+          >
+            Class ID
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-warning Prof"
+            data-bs-toggle="button"
+          >
+            Professor
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-warning dept"
+            data-bs-toggle="button"
+          >
+            Deptartment
+          </button>
       </div>
       </div>
 
@@ -56,6 +58,10 @@ export default {
 
 <style scoped>
 @import '../assets/main.css';
+
+.filter {
+  padding: 0;
+}
 
 .CID, .Prof, .dept
 {
@@ -86,7 +92,14 @@ export default {
   border-bottom: 5px solid rgb(0, 0, 0);
   padding-top: 5px;
   border-top: 5px solid rgb(0, 0, 0);
+  margin-left: 0;
   width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  h5 {
+    margin: 0;
+  }
 }
 
 /* .topBorder {

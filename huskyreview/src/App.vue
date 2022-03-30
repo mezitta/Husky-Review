@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <Nav />
+    <!-- <Nav /> -->
     <div class="app">
       <router-view />
     </div>
@@ -9,12 +9,12 @@
 
 <script>
   import axios from 'axios';
-  import Nav from "./components/Nav"
+  // import Nav from "./components/Nav"
 
   export default {
     name: 'App',
     components: {
-      Nav,
+      // Nav,
     },
     data() {
       return {
