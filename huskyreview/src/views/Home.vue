@@ -66,6 +66,8 @@
         font-size: 2.5em;
         font-weight: bold;
         margin-bottom: 2vh;
+        color: var(--main-back);
+        text-shadow: 0 0 0.25em black;
     }
 
     .logoRow {
@@ -98,7 +100,7 @@
         #makeHomeReview {
             width: 100%;
             background-color: var(--husky-yellow);
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: bold;
             color: var(--dark-back);
             border: none;
@@ -114,7 +116,7 @@
         }
 
         .logoRow {
-            padding: 2em 2em 0.5em 2em;
+            padding: 1em 2em 0.5em 2em;
             margin-bottom: 0;
         }
     }

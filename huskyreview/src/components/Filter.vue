@@ -8,7 +8,7 @@
         </h5>
       </div>
 
-      <div class="col">
+      <div class="col filterOptions">
         <div class="btn-group" role="group">
           <button
             type="button"
@@ -33,17 +33,17 @@
           >
             Deptartment
           </button>
-      </div>
+        </div>
       </div>
 
-      <div class="col">
+      <div class="col filterOptions">
         <div class="input-group">
           <div class="form-outline">
             <input type="search" id="form1" class="form-control" placeholder="Search"/>
           </div>
           <button type="button" class="btn btn-outline-warning search">
               Search
-            </button>
+          </button>
         </div>
       </div>
     </div>
@@ -101,6 +101,13 @@ export default {
     margin: 0;
   }
 }
+
+@media only screen and (max-width: 600px) {
+    .filterOptions {
+      padding: 0;
+    }
+}
+
 
 /* .topBorder {
   padding-top: 5px;

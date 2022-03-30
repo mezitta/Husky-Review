@@ -51,16 +51,18 @@
     font-family: helvetica;
   }
 
+  .body {
+    width: 100vw;
+  }
+
   .app {
     min-height: 100vh;
+    width: 100%;
     margin: 0;
     padding: 0;
     position: relative;
     background-color: var(--main-back);
+    overflow: hidden;
     display: block;
-    /* background-image: url(./assets/navbackground.svg);
-    background-position: top right;
-    background-size: 100% 100%;
-    background-repeat: no-repeat; */
   }
 </style>
