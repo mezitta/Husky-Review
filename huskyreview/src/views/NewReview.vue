@@ -67,7 +67,7 @@ export default {
     },
     methods: {
         submitForm() {
-            axios.post('/api/add-review', {
+            axios.post('http://localhost:4000/api/add-review', {
                 title:  this.addTitle,
                 prof:   this.addProf,
                 class_id:   this.addClassId,

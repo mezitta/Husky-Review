@@ -71,12 +71,14 @@ export default {
 
 .search {
   border-color: var(--husky-yellow);
-  color: var(--husky-yellow);
+  background-color: var(--husky-yellow);
+  color: black;
+  transition: all 0.3s;
 }
 
 .search:hover {
   background-color: var(--husky-yellow);
-  color: black;
+  color: white;
 }
 
 .filterBorder {
