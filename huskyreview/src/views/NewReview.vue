@@ -1,7 +1,14 @@
 <template>
     <Nav />
+    <div class="container-fluid success" v-if="submitSuccess">
+        <div class="row justify-content-center successRow">
+            <div class="col-sm-5 d-flex justify-content-center successCol">
+                <div class="d-flex align-items-center justify-content-center successMessage">Your Review Has Been Created Successfully</div>
+            </div>
+        </div>
+    </div>
     <div class="container-fluid" id="formContent">
-        <form v-on:submit.prevent="submitForm">
+        <form v-on:submit.prevent="submitForm" v-if="!submitSuccess">
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
                 <input type="text" placeholder="Class Name" required v-model="addClassName" id="className">
@@ -66,7 +73,8 @@ export default {
             addClassId: '',
             addClassName: '',
             addBody: '',
-            addRating: ''
+            addRating: '',
+            submitSuccess: false,
         }
     },
     methods: {
@@ -80,6 +88,7 @@ export default {
                 rating: this.addRating,
             }).then(response => {
                 console.log(response);
+                this.submitSuccess = true;
             })
             .catch((error) => {
                 console.log(error)
@@ -160,5 +169,24 @@ export default {
 
     .row {
         margin-bottom: 1.5em;
+    }
+
+    .success {
+        height: 10vh;
+        margin-top: 20px;
+        padding: 1em;
+        text-align: center;
+    }
+
+    .successMessage {
+        height: 100%;
+        width: 100%;
+        color: green;
+        background-color: rgb(152, 235, 152);
+        border-radius: 10px;
+    }
+
+    .successRow {
+        height: 100%;
     }
 </style>
