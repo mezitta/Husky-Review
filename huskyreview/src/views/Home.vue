@@ -4,7 +4,7 @@
         <div class="topPage">
             <Nav />
             <div class="row d-flex justify-content-center logoRow">
-                <img src='../assets/huskyreivewlogo.svg'>
+                <img src='../assets/huskyreivewlogo.svg' class="huskyLogo">
             </div>
 
             <div class="row d-flex justify-content-center makeReview">
@@ -71,7 +71,7 @@
     }
 
     .logoRow {
-        padding: 1.5em 3em 0 3em;
+        padding: 1.5em 10em 0 10em;
     }
 
     .makeReview {
@@ -119,6 +119,11 @@
             padding: 1em 2em 0.5em 2em;
             margin-bottom: 0;
         }
+
+        .huskyLogo {
+            display: none;
+        }
+
     }
 
     @media only screen and (min-width: 1300px) {

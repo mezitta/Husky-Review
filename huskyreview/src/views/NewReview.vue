@@ -4,22 +4,22 @@
         <form v-on:submit.prevent="submitForm">
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
-                <input type="text" placeholder="Class Name" required v-model="addClassName">
+                <input type="text" placeholder="Class Name" required v-model="addClassName" id="className">
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
-                <input type="text" placeholder="Class ID" required v-model="addClassId">
+                <input type="text" placeholder="Class ID" required v-model="addClassId" id="classId">
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
-                <input type="text" placeholder="Professor" required v-model="addProf">
+                <input type="text" placeholder="Professor" required v-model="addProf" id="professor">
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
-                <input type="text" placeholder="Title" required v-model="addTitle">
+                <input type="text" placeholder="Title" required v-model="addTitle" id='title'>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -29,7 +29,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
-                <select required v-model="addRating" >
+                <select required v-model="addRating" id="rating">
                     <option value="" disabled selected> Select Rating</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -52,6 +52,7 @@
 import axios from 'axios';
 import { destination } from '../destination';
 import Nav from "../components/Nav"
+// import func from 'vue-editor-bridge';
 
 export default {
     name: 'New-Review',
@@ -76,14 +77,42 @@ export default {
                 class_id:   this.addClassId,
                 class_name: this.addClassName,
                 body:   this.addBody,
-                rating: this.addRating
+                rating: this.addRating,
             }).then(response => {
                 console.log(response);
             })
             .catch((error) => {
                 console.log(error)
             })
+
+            this.addTitle = '';
+            this.addProf = '';
+            this.addClassId = '';
+            this.addClassName = '';
+            this.addBody = '';
+            this.addRating = '';
         }
+    },
+    mounted () {
+        // const submitBtn = document.getElementById('makeReview');
+
+        // submitBtn.addEventListener('click', function handleClick(event) {
+        //     event.preventDefault();
+
+        //     const titleInput = document.getElementById('title');
+        //     const classNameInput = document.getElementById('className');
+        //     const classIdInput = document.getElementById('classId');
+        //     const professorInput = document.getElementById('professor');
+        //     const bodyInput = document.getElementById('reviewComments');
+        //     const ratingInput = document.getElementById('rating');
+
+        //     titleInput.value = '';
+        //     classNameInput.value = '';
+        //     classIdInput.value = '';
+        //     professorInput.value = '';
+        //     bodyInput.value = '';
+        //     ratingInput.value = '';
+        // });
     }
 };
 
