@@ -7,7 +7,7 @@
 
 ## Project setup
 ```
-npm install
+npm install && cd backend && npm install && cd ..
 ```
 
 ### Launch full stack (at least once to set IP address)
