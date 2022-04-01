@@ -2,7 +2,7 @@
     <div class="test">
     <div class="container-fluid nav">
         <div class="col navCol" id="branding">
-            <!-- <img src="../assets/huskylogoblack.png" alt="" width="40" height="40" /> -->
+            <img src="../assets/huskyreivewlogo.svg" alt="" height="45"/>
         </div>
         <div class="col-4 col-lg-2 navCol"><router-link to="/">Home</router-link></div>
         <div class="col-4 col-lg-2 navCol"><router-link to="/about">About</router-link></div>
@@ -60,5 +60,15 @@
         /* padding: 0.5em; */
         margin: 0;
         padding: 0;
+    }
+
+    #branding {
+        padding: 0;
+    }
+
+    @media only screen and (min-width: 600px) {
+        #branding {
+            visibility: hidden;
+        }
     }
 </style>

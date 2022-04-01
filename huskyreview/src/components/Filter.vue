@@ -34,13 +34,18 @@
             Deptartment
           </button>
         </div>
+
+        <div class="input-group" id="mobileGroup">
+          <input type="search" id="form1" class="form-control" placeholder="Search Reviews"/>
+          <button type="button" class="btn btn-outline-warning search">
+            Search
+          </button>
+        </div>
       </div>
 
       <div class="col filterOptions">
-        <div class="input-group">
-          <div class="form-outline">
-            <input type="search" id="form1" class="form-control" placeholder="Search"/>
-          </div>
+        <div class="input-group" id="desktopGroup">
+            <input type="search" id="form1" class="form-control" placeholder="Search Reviews"/>
           <button type="button" class="btn btn-outline-warning search">
               Search
           </button>
@@ -89,22 +94,65 @@ export default {
 
 .filterBorder {
   padding-bottom: 5px;
-  border-bottom: 5px solid rgb(0, 0, 0);
+  /* border-bottom: 3px solid var(--main-back-dark); */
   padding-top: 5px;
-  border-top: 5px solid rgb(0, 0, 0);
+  /* border-top: 3px solid var(--main-back-dark); */
   margin-left: 0;
+  box-shadow: 0px 5px 5px var(--main-back-dark);
   width: 100%;
+}
+
+#form1.form-control {
+  display: inline-flex;
 }
 
 @media only screen and (min-width: 600px) {
   h5 {
     margin: 0;
   }
+
+  #mobileGroup {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 600px) {
     .filterOptions {
       padding: 0;
+    }
+    
+    h5 {
+      font-size: 0.1em;
+      margin: 0;
+      visibility: hidden;
+    }
+
+    /* .search {
+      display: inline-block;
+    } */
+
+    .btn-group {
+      width: 93vw;
+    }
+
+    button.btn.btn-warning.dept {
+      border-radius: 0 5px 0 0;
+    }
+
+    button.btn.btn-warning.CID {
+      border-radius: 5px 0 0 0;
+    }
+
+    button.btn.btn-outline-warning.search {
+      border-radius: 0 0 5px 0;
+    }
+
+    input#form1.form-control {
+      border-radius: 0 0 0 5px;
+    }
+
+    #desktopGroup {
+      display: none;
     }
 }
 
