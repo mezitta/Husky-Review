@@ -2,14 +2,40 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let reviewSchema = new Schema({
-    body: String, // primary text
-    class_id: String, // i.e. CS3141
-    class_name: String, // i.e. Team Software Project
+    body: {
+        type: String, // primary text
+        trim: true,
+        required: false
+    },
+    class_id: {
+        type: String, // e.g. CS3141
+        trim: true,
+        required: [true, 'class id not optional']
+    },
+    class_name: {
+        type: String, // e.g. Team Software Project
+        trim: true,
+        required: [true, 'class name not optional']
+    },
     neg_score: { type: Number, default: 0 }, // non-credibility
     pos_score: { type: Number, default: 0 }, // credibility
-    prof: String, // professor name
-    rating: Number,
-    title: String
+    prof: {
+        type: String, // professor name
+        trim: true,
+        required: [true, 'professor name not optional']
+    },
+    rating: {
+        type: Number, // 1-5 stars
+        required: [true, 'rating not optional'],
+        min: 1,
+        max: 5
+    },
+    title: {
+        type: String, // summary text
+        trim: true,
+        required: [true, 'review title not optional'],
+        maxLength: 72
+    }
 }, {
     collection: 'reviews'
 })
