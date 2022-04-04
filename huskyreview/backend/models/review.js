@@ -27,7 +27,7 @@ let reviewSchema = new Schema({
     rating: {
         type: Number, // 1-5 stars
         required: [true, 'rating not optional'],
-        min: 1,
+        min: 0,
         max: 5
     },
     title: {
