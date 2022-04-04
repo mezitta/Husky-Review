@@ -4,6 +4,7 @@
         <div class="row justify-content-center successRow">
             <div class="col-sm-5 d-flex justify-content-center successCol">
                 <div class="d-flex align-items-center justify-content-center successMessage">Your Review Has Been Created Successfully</div>
+                <div id="countdown">Page Will Refresh in: {{ timeleft }} seconds</div>
             </div>
         </div>
     </div>
@@ -75,6 +76,8 @@ export default {
             addBody: '',
             addRating: '',
             submitSuccess: false,
+            countdownText: '',
+            timeleft: 10,
         }
     },
     methods: {
@@ -89,6 +92,7 @@ export default {
             }).then(response => {
                 console.log(response);
                 this.submitSuccess = true;
+                this.countDown();
             })
             .catch((error) => {
                 console.log(error)
@@ -100,29 +104,19 @@ export default {
             this.addClassName = '';
             this.addBody = '';
             this.addRating = '';
-        }
+        },
+
+        countDown() {
+          const timer = setInterval(() => {
+            if (this.timeleft > 0) {
+              this.timeleft--;
+            } else {
+              clearInterval(timer);
+              location.reload();
+            }
+          }, 1000);
+        },
     },
-    mounted () {
-        // const submitBtn = document.getElementById('makeReview');
-
-        // submitBtn.addEventListener('click', function handleClick(event) {
-        //     event.preventDefault();
-
-        //     const titleInput = document.getElementById('title');
-        //     const classNameInput = document.getElementById('className');
-        //     const classIdInput = document.getElementById('classId');
-        //     const professorInput = document.getElementById('professor');
-        //     const bodyInput = document.getElementById('reviewComments');
-        //     const ratingInput = document.getElementById('rating');
-
-        //     titleInput.value = '';
-        //     classNameInput.value = '';
-        //     classIdInput.value = '';
-        //     professorInput.value = '';
-        //     bodyInput.value = '';
-        //     ratingInput.value = '';
-        // });
-    }
 };
 
 </script>
