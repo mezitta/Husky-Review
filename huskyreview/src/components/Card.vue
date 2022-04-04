@@ -1,26 +1,28 @@
 <template>
-    <div class="container card" >
+    <div class="container card col-4" id="ogCard" >
         <div class="row justify-content-end bottom-margin top-row-margin cardRow">
-            <div class="col">
+            <div class="col" id="title" >
+                <div id>
+                </div>
                 title
             </div>
-            <div class="col-2 text-end">
+            <div class="col-2 text-end" id = "rating">
                 rating
             </div>
         </div>
         <div class="row bottom-margin cardRow">
-            <div class="col right-border">
+            <div class="col right-border" id = "className">
                 class name
             </div>
-            <div class="col right-border">
+            <div class="col right-border" id = "classID">
                 class id
             </div>
-            <div class="col">
+            <div class="col" id = "prof">
                 prof name
             </div>
         </div>
         <div class="row bottom-margin cardRow bodyText">
-            <div class="col">
+            <div class="col" id = "body">
                 body
             </div>
         </div>
@@ -33,7 +35,7 @@
                     <i class="fa-solid fa-thumbs-up"></i>
                 </button>
             </div>
-            <div class="col-1 text-center rating">
+            <div class="col-1 text-center rating" id = "posScore">
                 0
             </div>
             <div class="col-1 text-center rating">
@@ -41,7 +43,7 @@
                     <i class="fa-solid fa-thumbs-down"></i>
                 </button>
             </div>
-            <div class="col-1  text-center rating">
+            <div class="col-1  text-center rating" id = "negScore">
                 0
             </div>
         </div>
@@ -49,9 +51,13 @@
 </template>
 
 <script>
-export default {
-    name: "review-card",
-}
+
+    
+    
+    // , rating, className, classID, prof, body, posScore, negScore
+    export default {
+        name: "review-Card",
+    };
 </script>
 
 <style scoped>
