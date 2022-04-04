@@ -15,8 +15,8 @@ reviewRoute.route('/').get((req, res) => {
     })
 })
 
-// TODO: Require not-null fields.
-reviewRoute.route('/add-review').post((req, res) => {
+// TODO: Retrieve class_name from Banweb by class_id?
+reviewRoute.route('/add-review').post((req, res, next) => {
     ReviewModel.create(req.body, (error, data) => {
         if (error) {
             return next(error)

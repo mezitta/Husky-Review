@@ -68,6 +68,13 @@ export default {
   padding: 0;
 }
 
+button.btn.btn-warning.Prof, button.btn.btn-warning.CID {
+  border-right: 3px solid;
+  border-right-color: var(--border-yellow);
+}
+
+
+
 .CID, .Prof, .dept
 {
   background-color: var(--husky-yellow);
@@ -127,10 +134,6 @@ export default {
       visibility: hidden;
     }
 
-    /* .search {
-      display: inline-block;
-    } */
-
     .btn-group {
       width: 93vw;
     }
@@ -154,11 +157,11 @@ export default {
     #desktopGroup {
       display: none;
     }
+
+    button.btn.btn-warning.Prof, button.btn.btn-warning.CID, button.btn.btn-warning.dept {
+      border-bottom: 2px solid;
+      border-bottom-color: var(--border-yellow);
+    } 
 }
 
-
-/* .topBorder {
-  padding-top: 5px;
-  border-top: 5px solid rgb(0, 0, 0);
-} */
 </style>

@@ -70,7 +70,7 @@
         background-color: rgb(255,255,255);
         border-radius: 20px;
         height: 300px;
-        
+        margin-bottom: 20px;
     }
 
     @media only screen and (max-width: 600px) {

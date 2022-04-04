@@ -5,6 +5,9 @@
       <router-view />
     </div>
   </div>
+  <footer> 
+    <div class="footerText">Husky Review 2022</div>
+  </footer>
 </template>
 
 <script>
@@ -65,5 +68,19 @@
     background-color: var(--main-back);
     overflow: hidden;
     display: block;
+  }
+
+  footer {
+    height: 8vh;
+    
+  }
+
+  .footerText {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-footer);
   }
 </style>
