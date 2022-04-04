@@ -30,11 +30,6 @@
     }
     dumb();
 
-
-    
-
-
-
     //let something = document.createElement("Card");
     //document.getElementById("holder").appendChild(something);
     window.onload = function thing(){

@@ -1,9 +1,13 @@
 <template>
     <Nav />
-    <div class="container-fluid success" v-if="submitSuccess">
+    <div class="container-fluid success" v-if="!submitSuccess">
         <div class="row justify-content-center successRow">
             <div class="col-sm-5 d-flex justify-content-center successCol">
                 <div class="d-flex align-items-center justify-content-center successMessage">Your Review Has Been Created Successfully</div>
+            </div>
+        </div>
+        <div class="row justify-content-center successRow">
+            <div class="col-sm-5 d-flex justify-content-center successCol">
                 <div id="countdown">Page Will Refresh in: {{ timeleft }} seconds</div>
             </div>
         </div>
@@ -166,7 +170,7 @@ export default {
     }
 
     .success {
-        height: 10vh;
+        height: 100px;
         margin-top: 20px;
         padding: 1em;
         text-align: center;
