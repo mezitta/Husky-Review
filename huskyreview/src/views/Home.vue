@@ -23,20 +23,23 @@
             </div>
         </div>
         <Filter/>
-        <Reviews />
+        <!-- <Reviews /> -->
+        <Card/>
     </div>
 </template>
 
 <script>
     import Filter from "../components/Filter"
     import Nav from "../components/Nav"
-    import Reviews from "../components/Reviews"
+    // import Reviews from "../components/Reviews"
+    import Card from "../components/Card"
     export default {
         name: 'Home-page',
         components: {
             Filter,
             Nav,
-            Reviews
+            // Reviews
+            Card
         }
     };
 </script>
@@ -50,6 +53,10 @@
 
     .home {
         padding: 0;
+    }
+
+    .cards {
+        /* text-align: center; */
     }
 
     .topPage {

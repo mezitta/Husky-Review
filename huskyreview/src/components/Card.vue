@@ -1,34 +1,34 @@
 <template>
-    <div class="fluid-container card my-auto" id="ogCard" >
+<!-- <div v-for="review in reviews" :key="review.class_id"> -->
+<div class="cards">
+    <div class="container card" id="ogCard" v-for="review in reviews" :key="review.class_id">
         <div class="row justify-content-end bottom-margin top-row-margin cardRow">
             <div class="col" id="title" >
-                <div id>
-                </div>
-                title
+                {{review.title}}
             </div>
             <div class="col-2 text-end" id = "rating">
-                rating
+                {{review.rating}}/5
             </div>
         </div>
         <div class="row bottom-margin cardRow">
             <div class="col-4 right-border" id = "className">
-                class name
+                {{review.class_name}}
             </div>
             <div class="col-4 right-border" id = "classID">
-                class id
+                {{review.class_id}}
             </div>
             <div class="col-4" id = "prof">
-                prof name
+                {{review.prof}}
             </div>
         </div>
         <div class="row bottom-margin cardRow bodyText">
             <div class="col" id = "body">
-                body
+                {{review.body}}
             </div>
         </div>
         <div class="row justify-content-end align-items-center bottom-row-margin top-row-margin cardRow">
             <div class="col-3 credit">
-                    credibility
+                    {{cardCredibility}}
             </div>
             <div class="col-1 text-center rating">
                 <button type="button" class="btn btn-* btn-sm">
@@ -47,16 +47,49 @@
                 0
             </div>
         </div>
+    <!-- </div> -->
     </div>
+</div>
 </template>
 
 <script>
-
+    import { destination } from '../destination';
+    import axios from 'axios';
     
     
     // , rating, className, classID, prof, body, posScore, negScore
     export default {
         name: "review-Card",
+
+        data() {
+            return {
+                cardTitle: '',
+                cardClassId: '',
+                cardRating: '',
+                cardClassName: '',
+                cardProfName: '',
+                cardBody: '',
+                cardCredibility: '',
+                reviews: []
+            }
+        },methods: {
+            getData() {
+                axios.get('http://' + destination.ip + ':4000/api', {
+                    params: {body: 'no'}
+                }).then(response => {
+                    this.reviews = response.data;
+                    console.log(this.reviews);
+                    console.log(this.reviews[0].body)
+                    this.reviewBody = this.reviews[0].body
+                })
+                    .catch((error) => {
+                    console.log(error)
+                })
+            }
+        },  
+        created() {
+            this.getData();
+        }
     };
 </script>
 
@@ -66,22 +99,30 @@
         padding: 0.2em;
     }
 
+    .cards {
+        margin: auto;
+        width: 90%;
+    }
+
     .card {
         background-color: rgb(255,255,255);
         border-radius: 20px;
         height: 300px;
         margin-bottom: 20px;
+        width: 50%;
+        display: inline-flex;
     }
 
     @media only screen and (max-width: 600px) {
         .card {
             height: 200px;
+            width:100%;
         }
     }
 
     @media only screen and (min-width: 1300px) {
         .card {
-            width: 30%;
+            width: calc(100% / 3);
         }
     }
 
