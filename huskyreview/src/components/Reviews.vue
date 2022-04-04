@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed-width container row" id='holder'>
+    <div class="row container" id='holder'>
         <Card >
         </Card>
         <div id="something">

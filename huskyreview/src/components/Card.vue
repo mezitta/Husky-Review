@@ -1,5 +1,5 @@
 <template>
-    <div class="container card col-4" id="ogCard" >
+    <div class="fluid-container card my-auto" id="ogCard" >
         <div class="row justify-content-end bottom-margin top-row-margin cardRow">
             <div class="col" id="title" >
                 <div id>
@@ -11,13 +11,13 @@
             </div>
         </div>
         <div class="row bottom-margin cardRow">
-            <div class="col right-border" id = "className">
+            <div class="col-4 right-border" id = "className">
                 class name
             </div>
-            <div class="col right-border" id = "classID">
+            <div class="col-4 right-border" id = "classID">
                 class id
             </div>
-            <div class="col" id = "prof">
+            <div class="col-4" id = "prof">
                 prof name
             </div>
         </div>
