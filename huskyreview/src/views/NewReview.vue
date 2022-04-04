@@ -57,6 +57,7 @@
                 </star-rating>
             </div>
         </div>
+        <div class="captcheck_container"></div>
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary" id="makeReview">Create Review</button>
@@ -92,6 +93,11 @@ export default {
             timeleft: 10,
         }
     },
+    mounted() {
+        let captcha = document.createElement('script')
+        captcha.setAttribute('src', 'https://captcheck.netsyms.com/captcheck.min.js')
+        document.head.appendChild(captcha)
+    },
     methods: {
         submitForm() {
             axios.post('http://' + destination.ip + ':4000/api/add-review', {
@@ -101,6 +107,9 @@ export default {
                 class_name: this.addClassName,
                 body:   this.addBody,
                 rating: this.addRating,
+                // TODO: Retrieve input data from sub-form.
+                captcheck_selected_answer: '',
+                captcheck_session_code: '',
             }).then(response => {
                 console.log(response);
                 this.submitSuccess = true;
