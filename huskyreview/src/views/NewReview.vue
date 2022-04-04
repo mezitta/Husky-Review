@@ -1,6 +1,6 @@
 <template>
     <Nav />
-    <div class="container-fluid success" v-if="!submitSuccess">
+    <div class="container-fluid success" v-if="submitSuccess">
         <div class="row justify-content-center successRow">
             <div class="col-sm-5 d-flex justify-content-center successCol">
                 <div class="d-flex align-items-center justify-content-center successMessage">Your Review Has Been Created Successfully</div>

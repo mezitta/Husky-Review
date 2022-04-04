@@ -55,10 +55,6 @@
         padding: 0;
     }
 
-    .cards {
-        /* text-align: center; */
-    }
-
     .topPage {
         background-color: var(--main-back);
         background-image: url('../assets/mtu_campus1.png');
