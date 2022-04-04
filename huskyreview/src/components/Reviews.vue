@@ -2,8 +2,6 @@
     <div class="row container" id='holder'>
         <Card >
         </Card>
-        <div id="something">
-        </div>
     </div>
 </template>
 
@@ -30,8 +28,6 @@
     }
     dumb();
 
-    //let something = document.createElement("Card");
-    //document.getElementById("holder").appendChild(something);
     window.onload = function thing(){
         let x = 0;
         let step = 0;
@@ -86,6 +82,9 @@
         created() {
             this.getData();
         },
+        mounted() {
+            
+        }
     }
 </script>
 
