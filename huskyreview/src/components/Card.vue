@@ -56,11 +56,12 @@
     import { destination } from '../destination';
     import axios from 'axios';
     
-    
     // , rating, className, classID, prof, body, posScore, negScore
     export default {
         name: "review-Card",
-
+        components: {
+            
+        },
         data() {
             return {
                 cardTitle: '',
@@ -78,8 +79,6 @@
                     params: {body: 'no'}
                 }).then(response => {
                     this.reviews = response.data;
-                    console.log(this.reviews);
-                    console.log(this.reviews[0].body)
                     this.reviewBody = this.reviews[0].body
                 })
                     .catch((error) => {

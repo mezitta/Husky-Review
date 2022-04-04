@@ -39,16 +39,22 @@
                 <textarea rows="5" cols="25" id="reviewComments" placeholder="Comments" v-model="addBody"></textarea>
             </div>
         </div>
+        <div class="row justify-content-center ratingText">Class Rating</div>
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
-                <select required v-model="addRating" id="rating">
+                <!-- <select required v-model="addRating" id="rating">
                     <option value="" disabled selected> Select Rating</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
-                </select>
+                </select> -->
+                <star-rating v-model:rating="addRating"
+                    :increment='0.5'
+                    active-color='#000000'
+                    :star-size='40'>
+                </star-rating>
             </div>
         </div>
         <div class="row justify-content-center">
@@ -63,13 +69,15 @@
 <script>
 import axios from 'axios';
 import { destination } from '../destination';
-import Nav from "../components/Nav"
+import Nav from '../components/Nav';
+import StarRating from 'vue-star-rating';
 // import func from 'vue-editor-bridge';
 
 export default {
     name: 'New-Review',
     components:{
-        Nav
+        Nav,
+        StarRating
     },
     data() {
         return {
@@ -78,7 +86,7 @@ export default {
             addClassId: '',
             addClassName: '',
             addBody: '',
-            addRating: '',
+            addRating: 0,
             submitSuccess: false,
             countdownText: '',
             timeleft: 10,
@@ -158,6 +166,7 @@ export default {
         color: var(--dark-back);
         border: none;
         transition: all 0.3s;
+        margin-top: 10px;
     }
 
     #makeReview:hover {
@@ -186,5 +195,16 @@ export default {
 
     .successRow {
         height: 100%;
+    }
+
+    .vue-star-rating-rating-text {
+        display: none;
+    }
+
+    .ratingText {
+        margin-bottom: 10px;
+        padding-top: 20px;
+        font-weight: bold;
+        font-size: 1.25em;
     }
 </style>
