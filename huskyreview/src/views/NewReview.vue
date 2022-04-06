@@ -57,7 +57,7 @@
                 </star-rating>
             </div>
         </div>
-        <div class="captcheck_container"></div>
+        <CaptchaContainer />
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary" id="makeReview">Create Review</button>
@@ -70,6 +70,7 @@
 <script>
 import axios from 'axios';
 import { destination } from '../destination';
+import CaptchaContainer from "../components/CaptchaContainer";
 import Nav from '../components/Nav';
 import StarRating from 'vue-star-rating';
 // import func from 'vue-editor-bridge';
@@ -77,6 +78,7 @@ import StarRating from 'vue-star-rating';
 export default {
     name: 'New-Review',
     components:{
+        CaptchaContainer,
         Nav,
         StarRating
     },
@@ -93,13 +95,10 @@ export default {
             timeleft: 10,
         }
     },
-    mounted() {
-        let captcha = document.createElement('script')
-        captcha.setAttribute('src', 'https://captcheck.netsyms.com/captcheck.min.js')
-        document.head.appendChild(captcha)
-    },
     methods: {
-        submitForm() {
+        submitForm(e) {
+            // Collect any regular HTML form input across entire page.
+            const formData = new FormData(e.target);
             axios.post('http://' + destination.ip + ':4000/api/add-review', {
                 title:  this.addTitle,
                 prof:   this.addProf,
@@ -107,24 +106,23 @@ export default {
                 class_name: this.addClassName,
                 body:   this.addBody,
                 rating: this.addRating,
-                // TODO: Retrieve input data from sub-form.
-                captcheck_selected_answer: '',
-                captcheck_session_code: '',
+                captcheck_selected_answer: formData.get('captcheck_selected_answer'),
+                captcheck_session_code: formData.get('captcheck_session_code')
             }).then(response => {
                 console.log(response);
                 this.submitSuccess = true;
                 this.countDown();
+                // Clear input fields.
+                this.addTitle = '';
+                this.addProf = '';
+                this.addClassId = '';
+                this.addClassName = '';
+                this.addBody = '';
+                this.addRating = 0;
             })
             .catch((error) => {
                 console.log(error)
             })
-
-            this.addTitle = '';
-            this.addProf = '';
-            this.addClassId = '';
-            this.addClassName = '';
-            this.addBody = '';
-            this.addRating = '';
         },
 
         countDown() {

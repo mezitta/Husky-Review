@@ -25,7 +25,7 @@ let reviewSchema = new Schema({
         required: [true, 'professor name not optional']
     },
     rating: {
-        type: Number, // 1-5 stars
+        type: Number, // 0-5 stars
         required: [true, 'rating not optional'],
         min: 0,
         max: 5
