@@ -2,8 +2,14 @@
     --husky-yellow: rgb(252,206,1);
     --hover-yellow: rgb(255, 216, 43);
     --border-yellow: rgb(241, 197, 0);
+    
+    /* Background Colors */
     --dark-back: rgb(29, 29, 29);
     --main-back: #f0f0f0;
     --main-back-dark: rgba(214, 213, 213, 0.5);
+
+    --card-shadow: rgba(214, 213, 213, 0.85);
+    --card-shadow-hover: rgba(150, 150, 150, 0.85);
+
     --main-footer: rgba(216, 216, 216, 0.9);
 }

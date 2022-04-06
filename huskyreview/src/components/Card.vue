@@ -93,6 +93,7 @@
 </script>
 
 <style scoped>
+@import '../assets/main.css';
 
     .row {
         padding: 0.2em;
@@ -104,24 +105,46 @@
     }
 
     .card {
+        height: 300px;
+        width: calc(50% - 0.5em);
+
+        margin-bottom: 0.25em;
+        margin-left: 0.25em;
+        margin-right: 0.25em;
+
+        display: inline-flex;
+
         background-color: rgb(255,255,255);
         border-radius: 20px;
-        height: 300px;
-        margin-bottom: 20px;
-        width: 50%;
-        display: inline-flex;
+        box-shadow: 0px 0px 10px var(--card-shadow);
+
+        position: relative;
+        top: 0;
+
+        transition: all 0.3s;
+    }
+
+    .card:hover {
+       top: -10px;
+       box-shadow: 0px 0px 10px var(--card-shadow-hover);
     }
 
     @media only screen and (max-width: 600px) {
         .card {
             height: 200px;
             width:100%;
+
+            margin-left: 0;
+            margin-right: 0;
         }
     }
 
     @media only screen and (min-width: 1300px) {
         .card {
-            width: calc(100% / 3);
+            margin-left: 0.25em;
+            margin-right: 0.25em;
+            /* width: calc(100% / 3); */
+            width: calc((100% / 3) - 0.75em);
         }
     }
 
@@ -146,8 +169,8 @@
     }
 
     .right-border {
-         padding-right: 5px; 
-         border-right: 1px solid rgb(0, 0, 0);
+        padding-right: 5px; 
+        border-right: 1px solid rgb(0, 0, 0);
     }
     
     .bottom-margin { 

@@ -73,8 +73,6 @@ button.btn.btn-warning.Prof, button.btn.btn-warning.CID {
   border-right-color: var(--border-yellow);
 }
 
-
-
 .CID, .Prof, .dept
 {
   background-color: var(--husky-yellow);
@@ -101,9 +99,7 @@ button.btn.btn-warning.Prof, button.btn.btn-warning.CID {
 
 .filterBorder {
   padding-bottom: 5px;
-  /* border-bottom: 3px solid var(--main-back-dark); */
   padding-top: 5px;
-  /* border-top: 3px solid var(--main-back-dark); */
   margin-left: 0;
   box-shadow: 0px 5px 5px var(--main-back-dark);
   width: 100%;
