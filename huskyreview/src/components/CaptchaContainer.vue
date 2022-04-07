@@ -31,7 +31,7 @@ authorization from Netsyms Technologies.
 <script>
 export default {
     methods: {
-        windowOnLoad: function () {
+         makeCaptcha() {
 
             let api_url = "https://captcheck.netsyms.com/api.php";
 
@@ -156,7 +156,7 @@ export default {
         }
     },
     mounted() {
-        this.windowOnLoad()
+        this.makeCaptcha()
     }
 }
 </script>

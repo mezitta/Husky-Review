@@ -57,7 +57,7 @@
                 </star-rating>
             </div>
         </div>
-        <CaptchaContainer />
+        <div class="row justify-content-center captchaContainer"><CaptchaContainer /></div>
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary" id="makeReview">Create Review</button>
@@ -213,5 +213,9 @@ export default {
         padding-top: 20px;
         font-weight: bold;
         font-size: 1.25em;
+    }
+
+    .captchaContainer {
+        text-align: center;
     }
 </style>
