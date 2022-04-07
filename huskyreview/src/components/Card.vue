@@ -6,13 +6,22 @@
             <div class="col" id="title" >
                 {{review.title}}
             </div>
-            <div class="col-2 text-end" id = "rating">
-                {{review.rating}}/5
+            <div class="col-5 text-end" id = "rating">
+                <div class="stars">
+                    <span v-for="(n, i) in Math.floor(review.rating)" v-bind:key="(n, i)" class="cardStar"><i class="fa-solid fa-star" /></span>
+                    <span v-if="review.rating % 1 != 0" class="cardStar">
+                        <span class="halfStarFill"><i class="fa-solid fa-star-half" /></span>
+                        <!-- <span class="halfStarEmpty"><i class="fa-solid fa-star-half fa-flip-horizontal" /></span> -->
+                    </span>
+                    <span v-for="(n, i) in (5 - Math.floor(review.rating))" v-bind:key="(n, i)" class="cardStarFill"><i class="fa-solid fa-star" /></span>
+                </div>
+                <span class="cardRating">{{review.rating}}</span>
             </div>
         </div>
         <div class="row bottom-margin cardRow">
             <div class="col-4 right-border" id = "className">
                 {{review.class_name}}
+                
             </div>
             <div class="col-4 right-border" id = "classID">
                 {{review.class_id}}
@@ -26,7 +35,7 @@
                 {{review.body}}
             </div>
         </div>
-        <div class="row justify-content-end align-items-center bottom-row-margin top-row-margin cardRow">
+        <!-- <div class="row justify-content-end align-items-center bottom-row-margin top-row-margin cardRow">
             <div class="col-3 credit">
                     {{cardCredibility}}
             </div>
@@ -46,7 +55,7 @@
             <div class="col-1  text-center rating" id = "negScore">
                 0
             </div>
-        </div>
+        </div> -->
     <!-- </div> -->
     </div>
 </div>
@@ -71,7 +80,7 @@
                 cardProfName: '',
                 cardBody: '',
                 cardCredibility: '',
-                reviews: []
+                reviews: [],
             }
         },methods: {
             getData() {
@@ -184,6 +193,27 @@
 
     .bottom-row-margin { 
         margin-bottom:0px; 
+    }
+
+    .cardStar {
+        color: var(--husky-yellow);
+    }
+
+    .halfStarFill {
+        position: absolute;
+    }
+
+    .cardStarFill {
+        color: grey;
+    }
+
+    .cardRating {
+        margin-left: 4px;
+        font-weight: bold;
+    }
+
+    .stars {
+        display: inline;
     }
 
 </style>
