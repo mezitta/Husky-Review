@@ -65,7 +65,7 @@
     }
 
     .shareFont {
-        font-size: 2.5em;
+        font-size: 2.1em;
         font-weight: bold;
         margin-bottom: 2vh;
         color: var(--main-back);
@@ -89,12 +89,16 @@
         width: 100%;
         max-width: 500px;
         margin-bottom: 10%;
+
         background-color: var(--husky-yellow);
+        color: var(--dark-back);
+
         font-size: 1.8rem;
         font-weight: bold;
-        color: var(--dark-back);
+        
         border: none;
         border-radius: 40px;
+        
         transition: all 0.3s;
     }
 
@@ -102,7 +106,7 @@
         #makeHomeReview {
             width: 100%;
             background-color: var(--husky-yellow);
-            font-size: 1rem;
+            font-size: 0.95em;
             font-weight: bold;
             color: var(--dark-back);
             border: none;

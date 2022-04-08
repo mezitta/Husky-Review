@@ -52,7 +52,7 @@
   }
 
   .content {
-    font-family: helvetica;
+    font-family: Verdana, helvetica;
   }
 
   .body {
