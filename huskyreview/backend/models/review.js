@@ -17,8 +17,6 @@ let reviewSchema = new Schema({
         trim: true,
         required: [true, 'class name not optional']
     },
-    neg_score: { type: Number, default: 0 }, // non-credibility
-    pos_score: { type: Number, default: 0 }, // credibility
     prof: {
         type: String, // professor name
         trim: true,
