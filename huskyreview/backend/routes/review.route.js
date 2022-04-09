@@ -1,4 +1,5 @@
 const axios = require('axios').default;
+const destination = require('../destination.js');
 const express = require('express');
 const { nextTick } = require('vue');
 const reviewRoute = express.Router();
@@ -27,8 +28,7 @@ reviewRoute.route('/add-review').post(async (req, res, next) => {
         postBody.append('session_id', req.body.captcheck_session_code)
         postBody.append('answer_id', req.body.captcheck_selected_answer)
         postBody.append('action', "verify")
-        // TODO: Self-host PHP backend and use { destination } for URL.
-        const captcha = await axios.post('https://captcheck.netsyms.com/api.php', postBody, {
+        const captcha = await axios.post('http://' + destination.ip + '/api.php', postBody, {
             'headers': {
                 'Content-Type':'application/x-www-form-urlencoded'
             }

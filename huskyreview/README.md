@@ -7,7 +7,7 @@
 
 ## Project setup
 ```
-npm install && cd backend && npm install && cd ..
+./setup_ubuntu.sh
 ```
 
 ### Launch full stack (at least once to set IP address)

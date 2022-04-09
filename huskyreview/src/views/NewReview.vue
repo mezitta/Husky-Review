@@ -57,7 +57,9 @@
                 </star-rating>
             </div>
         </div>
-        <div class="row justify-content-center captchaContainer"><CaptchaContainer /></div>
+        <div class="row justify-content-center captchaContainer">
+            <CaptchaContainer :key="reloadCaptcha" />
+        </div>
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary" id="makeReview">Create Review</button>
@@ -93,6 +95,7 @@ export default {
             submitSuccess: false,
             countdownText: '',
             timeleft: 10,
+            reloadCaptcha: 0
         }
     },
     methods: {
@@ -121,6 +124,8 @@ export default {
                 this.addRating = 0;
             })
             .catch((error) => {
+                // Regenerate CAPTCHA after failure invalidates session.
+                this.reloadCaptcha += 1;
                 console.log(error)
             })
         },

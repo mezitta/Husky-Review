@@ -1,0 +1,3 @@
+[submodule "huskyreview/Captcheck"]
+	path = huskyreview/Captcheck
+	url = https://source.netsyms.com/Netsyms/Captcheck.git
