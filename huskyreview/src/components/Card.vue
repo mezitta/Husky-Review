@@ -1,8 +1,7 @@
 <template>
-<!-- <div v-for="review in reviews" :key="review.class_id"> -->
 <div class="cards">
     <div class="container card" id="ogCard" v-for="review in reviews" :key="review.class_id">
-        <div class="row justify-content-end bottom-margin top-row-margin cardRow">
+        <div class="row justify-content-end bottom-margin top-row-margin cardRow topRow">
             <div class="col" id="title" >
                 {{review.title}}
             </div>
@@ -11,52 +10,28 @@
                     <span v-for="(n, i) in Math.floor(review.rating)" v-bind:key="(n, i)" class="cardStar"><i class="fa-solid fa-star" /></span>
                     <span v-if="review.rating % 1 != 0" class="cardStar">
                         <span class="halfStarFill"><i class="fa-solid fa-star-half" /></span>
-                        <!-- <span class="halfStarEmpty"><i class="fa-solid fa-star-half fa-flip-horizontal" /></span> -->
                     </span>
                     <span v-for="(n, i) in (5 - Math.floor(review.rating))" v-bind:key="(n, i)" class="cardStarFill"><i class="fa-solid fa-star" /></span>
                 </div>
                 <span class="cardRating">{{review.rating}}</span>
             </div>
         </div>
-        <div class="row bottom-margin cardRow">
-            <div class="col-4 right-border" id = "className">
+        <div class="row bottom-margin cardRow cardInfo">
+            <!-- <div class="col-4 right-border" id = "className">
                 {{review.class_name}}
-                
-            </div>
-            <div class="col-4 right-border" id = "classID">
+            </div> -->
+            <div class="col-6 right-border" id = "classID">
                 {{review.class_id}}
             </div>
-            <div class="col-4" id = "prof">
+            <div class="col-6" id = "prof">
                 {{review.prof}}
             </div>
         </div>
-        <div class="row bottom-margin cardRow bodyText">
+        <div class="row cardRow bodyText">
             <div class="col" id = "body">
                 {{review.body}}
             </div>
         </div>
-        <!-- <div class="row justify-content-end align-items-center bottom-row-margin top-row-margin cardRow">
-            <div class="col-3 credit">
-                    {{cardCredibility}}
-            </div>
-            <div class="col-1 text-center rating">
-                <button type="button" class="btn btn-* btn-sm">
-                    <i class="fa-solid fa-thumbs-up"></i>
-                </button>
-            </div>
-            <div class="col-1 text-center rating" id = "posScore">
-                0
-            </div>
-            <div class="col-1 text-center rating">
-                <button type="button" class="btn btn-* btn-sm">
-                    <i class="fa-solid fa-thumbs-down"></i>
-                </button>
-            </div>
-            <div class="col-1  text-center rating" id = "negScore">
-                0
-            </div>
-        </div> -->
-    <!-- </div> -->
     </div>
 </div>
 </template>
@@ -104,6 +79,18 @@
 <style scoped>
 @import '../assets/main.css';
 
+    /* .topRow {
+        background-color: var(--card-title);
+        border-radius: 20px 20px 0 0;
+        min-height: 12%;
+        display: flex;
+        align-items: center;
+    } */
+
+    .cardInfo {
+        /* background-color: var(--card-info); */
+    }
+    
     .row {
         padding: 0.2em;
     }
@@ -152,17 +139,23 @@
         .card {
             margin-left: 0.25em;
             margin-right: 0.25em;
-            /* width: calc(100% / 3); */
             width: calc((100% / 3) - 0.75em);
         }
     }
 
     .bodyText {
-        height: 60%;
+        height: 75%;
+        overflow: auto;
+        scrollbar-width: none;
+    }
+
+    .bodyText::-webkit-scrollbar {
+        -ms-oveflow-style: none;
+        display: none;
     }
 
     .cardRow {
-        color: blue;
+        color: black;
         font-size: 0.85em;
     }
 
@@ -179,12 +172,13 @@
 
     .right-border {
         padding-right: 5px; 
-        border-right: 1px solid rgb(0, 0, 0);
+        /* border-right: 1px solid rgb(0, 0, 0); */
     }
     
     .bottom-margin { 
         margin-bottom:0px; 
-        border-bottom: 1px solid rgb(0, 0, 0);
+        /* border-bottom: 1px solid rgb(0, 0, 0); */
+        box-shadow: 0px 2px 2px var(--main-back-dark);
     }
 
     .top-row-margin {
