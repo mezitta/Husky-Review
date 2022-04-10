@@ -17,9 +17,9 @@
             </div>
         </div>
         <div class="row bottom-margin cardRow cardInfo">
-            <!-- <div class="col-4 right-border" id = "className">
+            <div class="col-4 right-border" id = "className">
                 {{review.class_name}}
-            </div> -->
+            </div>
             <div class="col-6 right-border" id = "classID">
                 {{review.class_id}}
             </div>
@@ -79,13 +79,14 @@
 <style scoped>
 @import '../assets/main.css';
 
-    /* .topRow {
+    .topRow {
         background-color: var(--card-title);
         border-radius: 20px 20px 0 0;
         min-height: 12%;
-        display: flex;
+        display: inline-flex;
         align-items: center;
-    } */
+        overflow: hidden;
+    }
 
     .row {
         padding: 0.2em;
@@ -177,9 +178,9 @@
         box-shadow: 0px 2px 2px var(--main-back-dark);
     }
 
-    .top-row-margin {
+    /* .top-row-margin {
         margin-top: 10px;
-    }
+    } */
 
     .bottom-row-margin { 
         margin-bottom:0px; 
@@ -204,6 +205,10 @@
 
     .stars {
         display: inline;
+    }
+
+    #className {
+        display: none;
     }
 
 </style>

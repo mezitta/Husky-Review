@@ -31,7 +31,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
-                <input type="text" placeholder="Title" required v-model="addTitle" id='title'>
+                <input type="text" placeholder="Title" required v-model="addTitle" id='title' maxlength="20">
             </div>
         </div>
         <div class="row justify-content-center">
