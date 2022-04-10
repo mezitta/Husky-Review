@@ -4,6 +4,8 @@ const express = require('express');
 const { nextTick } = require('vue');
 const reviewRoute = express.Router();
 
+//let api_url = 'https://captcheck.netsyms.com/api.php';
+let api_url = 'http://' + destination.ip + '/api.php';
 let ReviewModel = require('../models/review');
 
 // TODO: Filter reviews by query string.
@@ -28,8 +30,7 @@ reviewRoute.route('/add-review').post(async (req, res, next) => {
         postBody.append('session_id', req.body.captcheck_session_code)
         postBody.append('answer_id', req.body.captcheck_selected_answer)
         postBody.append('action', "verify")
-        //const captcha = await axios.post('https://captcheck.netsyms.com/api.php', postBody, {
-        const captcha = await axios.post('http://' + destination.ip + '/api.php', postBody, {
+        const captcha = await axios.post(api_url, postBody, {
             'headers': {
                 'Content-Type':'application/x-www-form-urlencoded'
             }
