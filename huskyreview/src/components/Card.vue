@@ -87,10 +87,6 @@
         align-items: center;
     } */
 
-    .cardInfo {
-        /* background-color: var(--card-info); */
-    }
-    
     .row {
         padding: 0.2em;
     }
