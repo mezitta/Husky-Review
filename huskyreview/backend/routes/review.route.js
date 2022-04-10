@@ -28,6 +28,7 @@ reviewRoute.route('/add-review').post(async (req, res, next) => {
         postBody.append('session_id', req.body.captcheck_session_code)
         postBody.append('answer_id', req.body.captcheck_selected_answer)
         postBody.append('action', "verify")
+        //const captcha = await axios.post('https://captcheck.netsyms.com/api.php', postBody, {
         const captcha = await axios.post('http://' + destination.ip + '/api.php', postBody, {
             'headers': {
                 'Content-Type':'application/x-www-form-urlencoded'

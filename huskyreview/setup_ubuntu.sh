@@ -3,6 +3,7 @@
 echo "Installing web server and databases..."
 sudo apt install apache2 composer mariadb-server-10.3 mongodb php7.4 php7.4-gd php7.4-mysql
 npm install && cd backend && npm install && cd ..
+git submodule init && git submodule update
 cd Captcheck && composer install && cd ..
 echo "Configuring web server and databases..."
 

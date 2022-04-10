@@ -34,6 +34,7 @@ export default {
     methods: {
         makeCaptcha() {
 
+            //let api_url = "https://captcheck.netsyms.com/api.php";
             let api_url = "http://" + destination.ip + "/api.php";
 
             function chooseAnswer(idp, ans) {
