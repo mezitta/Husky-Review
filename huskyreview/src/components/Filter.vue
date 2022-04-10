@@ -31,7 +31,7 @@
             class="btn btn-warning dept"
             data-bs-toggle="button"
           >
-            Deptartment
+            Department
           </button>
         </div>
 
