@@ -18,18 +18,18 @@
             </div>
         </div>
         <div class="row bottom-margin cardRow cardInfo">
-            <div class="col-4 right-border" id = "className">
+            <div class="col-4 right-border" id="className">
                 {{ cardClassName }}
             </div>
-            <div class="col-6 right-border" id = "classID">
+            <div class="col-6 right-border" id="classID">
                 {{ cardClassId }}
             </div>
-            <div class="col-6" id = "prof">
+            <div class="col-6" id="prof">
                 {{ cardProfName }}
             </div>
         </div>
         <div class="row cardRow bodyText">
-            <div class="col" id = "body">
+            <div class="col" id="body">
                 {{ cardBody }}
             </div>
         </div>
@@ -38,14 +38,37 @@
     <transition name="fade" appear>
         <div class="modal-overlay" v-if="showModal" @click="showModal=false"/>
     </transition>
-    <transition name="slide" appear>
-        <div class="modal" v-if="showModal" @click="showModal=false">
-            {{ cardTitle }}
-            {{ cardRating }}
-            {{ cardClassName }}
-            {{ cardClassId }}
-            {{ cardProfName }}
-            {{ cardBody }}
+    <transition name="slide-fade" appear>
+        <div class="cardModal" v-if="showModal">
+            <div class="fluid-container">
+                <div class="row modalRow">
+                    <div class="col-11 modalTitle"><h2>{{ cardTitle }}</h2></div>
+                    <div class="col-1 text-end modalExit" @click="showModal=false"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+                <div class="row modalRow">
+                    <div class="col modalRating">
+                        <div class="modalStars">
+                            <span v-for="(n, i) in Math.floor(cardRating)" v-bind:key="(n, i)" class="cardStar"><i class="fa-solid fa-star" /></span>
+                            <span v-if="cardRating % 1 != 0" class="cardStar">
+                                <span class="halfStarFill"><i class="fa-solid fa-star-half" /></span>
+                            </span>
+                            <span v-for="(n, i) in (5 - Math.floor(cardRating))" v-bind:key="(n, i)" class="cardStarFill"><i class="fa-solid fa-star" /></span>
+                        </div>
+                        <span class="cardRating">
+                            {{ cardRating }}
+                        </span>
+                    </div>
+                </div>
+                <div class="row modalRow">
+                    Class: {{ cardClassId }}
+                </div>
+                <div class="row modalRow">
+                     Professor: {{ cardProfName }}
+                </div>
+                <div class="row modalRow modalBodyText">
+                     {{ cardBody }}
+                </div>
+            </div>
         </div>
     </transition>
 
@@ -96,6 +119,8 @@
         },  
         created() {
             this.getData();
+
+          
         }
     };
 </script>
@@ -112,18 +137,34 @@
         background-color: rgba(0, 0, 0, 0.3);
     }
 
-    .modal {
+    .cardModal {
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 99;
+        overflow: hidden;
 
-        width: 100%;
-        max-width: 400px;
-        height: 400px;
-        background-color: white;
+        width: 95%;
+        max-width: 700px;
+        height: 90%;
+        padding: 1em;
+        background-color: rgb(255,255,255);;
         border-radius: 10px;
+    }
+
+    .modalExit {
+        cursor: pointer;
+    }
+
+    .slide-fade-enter-active,
+    .slide-fade-leave-active {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .slide-fade-enter-from,
+    .slide-fade-leave-to {
+        transform: translateY(100vh) translateX(-50%);
     }
 
     .fade-enter-active,
@@ -188,6 +229,17 @@
             margin-left: 0;
             margin-right: 0;
         }
+
+        .modalBodyText {
+            height: 50vh;
+            overflow: auto;
+            scrollbar-width: none;
+        }
+
+        .modalBodyText::-webkit-scrollbar {
+            -ms-oveflow-style: none;
+            display: none;
+        }
     }
 
     @media only screen and (min-width: 1300px) {
@@ -209,9 +261,15 @@
         display: none;
     }
 
+    
+
     .cardRow {
         color: black;
         font-size: 0.85em;
+    }
+
+    .modalRow {
+        padding: 0 1em 0 1em;
     }
 
     .credit {
@@ -257,6 +315,19 @@
 
     .stars {
         display: inline;
+    }
+
+    .modalStars {
+        display: inline;
+        text-align: left;
+    }
+
+    .modalRating {
+        padding: 0;
+    }
+
+    .modalTitle {
+        padding: 0;
     }
 
     #className {
