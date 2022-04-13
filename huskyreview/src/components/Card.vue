@@ -1,39 +1,41 @@
 <template>
-<div class="cards">
-    <div class="container card" id="ogCard" v-for="review in reviews" :key="review.class_id">
-        <div class="row justify-content-end bottom-margin top-row-margin cardRow topRow">
-            <div class="col" id="title" >
-                {{review.title}}
-            </div>
-            <div class="col-5 text-end" id = "rating">
-                <div class="stars">
-                    <span v-for="(n, i) in Math.floor(review.rating)" v-bind:key="(n, i)" class="cardStar"><i class="fa-solid fa-star" /></span>
-                    <span v-if="review.rating % 1 != 0" class="cardStar">
-                        <span class="halfStarFill"><i class="fa-solid fa-star-half" /></span>
-                    </span>
-                    <span v-for="(n, i) in (5 - Math.floor(review.rating))" v-bind:key="(n, i)" class="cardStarFill"><i class="fa-solid fa-star" /></span>
+    <span>
+        <div class="container card">
+            <div class="row justify-content-end bottom-margin top-row-margin cardRow topRow">
+                <div class="col" id="title" >
+                    {{ cardTitle }}
                 </div>
-                <span class="cardRating">{{review.rating}}</span>
+                <div class="col-5 text-end" id = "rating">
+                    <div class="stars">
+                        <span v-for="(n, i) in Math.floor(cardRating)" v-bind:key="(n, i)" class="cardStar"><i class="fa-solid fa-star" /></span>
+                        <span v-if="cardRating % 1 != 0" class="cardStar">
+                            <span class="halfStarFill"><i class="fa-solid fa-star-half" /></span>
+                        </span>
+                        <span v-for="(n, i) in (5 - Math.floor(cardRating))" v-bind:key="(n, i)" class="cardStarFill"><i class="fa-solid fa-star" /></span>
+                    </div>
+                    <span class="cardRating">
+                        {{ cardRating }}
+                    </span>
+                </div>
+            </div>
+            <div class="row bottom-margin cardRow cardInfo">
+                <div class="col-4 right-border" id = "className">
+                    {{ cardClassName }}
+                </div>
+                <div class="col-6 right-border" id = "classID">
+                    {{ cardClassId }}
+                </div>
+                <div class="col-6" id = "prof">
+                    {{ cardProfName }}
+                </div>
+            </div>
+            <div class="row cardRow bodyText">
+                <div class="col" id = "body">
+                    {{ cardBody }}
+                </div>
             </div>
         </div>
-        <div class="row bottom-margin cardRow cardInfo">
-            <div class="col-4 right-border" id = "className">
-                {{review.class_name}}
-            </div>
-            <div class="col-6 right-border" id = "classID">
-                {{review.class_id}}
-            </div>
-            <div class="col-6" id = "prof">
-                {{review.prof}}
-            </div>
-        </div>
-        <div class="row cardRow bodyText">
-            <div class="col" id = "body">
-                {{review.body}}
-            </div>
-        </div>
-    </div>
-</div>
+    </span>
 </template>
 
 <script>
@@ -48,15 +50,24 @@
         },
         data() {
             return {
-                cardTitle: '',
-                cardClassId: '',
-                cardRating: '',
-                cardClassName: '',
-                cardProfName: '',
-                cardBody: '',
-                cardCredibility: '',
-                reviews: [],
+                // cardTitle: '',
+                // cardClassId: '',
+                // cardRating: '',
+                // cardClassName: '',
+                // cardProfName: '',
+                // cardBody: '',
+                // cardCredibility: '',
+                // reviews: [],
+                // showModal: false,
             }
+        },
+        props: {
+            cardTitle: String,
+            cardClassId: String,
+            cardClassName: String,
+            cardRating: Number,
+            cardProfName: String,
+            cardBody: String,
         },methods: {
             getData() {
                 axios.get('http://' + destination.ip + ':4000/api', {
@@ -78,6 +89,16 @@
 
 <style scoped>
 @import '../assets/main.css';
+    .modal-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999999;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
 
     .topRow {
         background-color: var(--card-title);
@@ -120,6 +141,7 @@
     .card:hover {
        top: -10px;
        box-shadow: 0px 0px 10px var(--card-shadow-hover);
+       cursor: pointer;
     }
 
     @media only screen and (max-width: 600px) {
@@ -169,18 +191,12 @@
 
     .right-border {
         padding-right: 5px; 
-        /* border-right: 1px solid rgb(0, 0, 0); */
     }
     
     .bottom-margin { 
         margin-bottom:0px; 
-        /* border-bottom: 1px solid rgb(0, 0, 0); */
         box-shadow: 0px 2px 2px var(--main-back-dark);
     }
-
-    /* .top-row-margin {
-        margin-top: 10px;
-    } */
 
     .bottom-row-margin { 
         margin-bottom:0px; 

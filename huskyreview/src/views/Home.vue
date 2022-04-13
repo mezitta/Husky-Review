@@ -23,23 +23,20 @@
             </div>
         </div>
         <Filter/>
-        <!-- <Reviews /> -->
-        <Card/>
+        <Reviews />
     </div>
 </template>
 
 <script>
     import Filter from "../components/Filter"
     import Nav from "../components/Nav"
-    // import Reviews from "../components/Reviews"
-    import Card from "../components/Card"
+    import Reviews from "../components/Reviews"
     export default {
         name: 'Home-page',
         components: {
             Filter,
             Nav,
-            // Reviews
-            Card
+            Reviews
         }
     };
 </script>
