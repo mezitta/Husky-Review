@@ -1,41 +1,54 @@
 <template>
-    <span>
-        <div class="container card">
-            <div class="row justify-content-end bottom-margin top-row-margin cardRow topRow">
-                <div class="col" id="title" >
-                    {{ cardTitle }}
-                </div>
-                <div class="col-5 text-end" id = "rating">
-                    <div class="stars">
-                        <span v-for="(n, i) in Math.floor(cardRating)" v-bind:key="(n, i)" class="cardStar"><i class="fa-solid fa-star" /></span>
-                        <span v-if="cardRating % 1 != 0" class="cardStar">
-                            <span class="halfStarFill"><i class="fa-solid fa-star-half" /></span>
-                        </span>
-                        <span v-for="(n, i) in (5 - Math.floor(cardRating))" v-bind:key="(n, i)" class="cardStarFill"><i class="fa-solid fa-star" /></span>
-                    </div>
-                    <span class="cardRating">
-                        {{ cardRating }}
+    <div class="container card" @click="showModal=true">
+        <div class="row justify-content-end bottom-margin top-row-margin cardRow topRow">
+            <div class="col" id="title" >
+                {{ cardTitle }}
+            </div>
+            <div class="col-5 text-end" id = "rating">
+                <div class="stars">
+                    <span v-for="(n, i) in Math.floor(cardRating)" v-bind:key="(n, i)" class="cardStar"><i class="fa-solid fa-star" /></span>
+                    <span v-if="cardRating % 1 != 0" class="cardStar">
+                        <span class="halfStarFill"><i class="fa-solid fa-star-half" /></span>
                     </span>
+                    <span v-for="(n, i) in (5 - Math.floor(cardRating))" v-bind:key="(n, i)" class="cardStarFill"><i class="fa-solid fa-star" /></span>
                 </div>
-            </div>
-            <div class="row bottom-margin cardRow cardInfo">
-                <div class="col-4 right-border" id = "className">
-                    {{ cardClassName }}
-                </div>
-                <div class="col-6 right-border" id = "classID">
-                    {{ cardClassId }}
-                </div>
-                <div class="col-6" id = "prof">
-                    {{ cardProfName }}
-                </div>
-            </div>
-            <div class="row cardRow bodyText">
-                <div class="col" id = "body">
-                    {{ cardBody }}
-                </div>
+                <span class="cardRating">
+                    {{ cardRating }}
+                </span>
             </div>
         </div>
-    </span>
+        <div class="row bottom-margin cardRow cardInfo">
+            <div class="col-4 right-border" id = "className">
+                {{ cardClassName }}
+            </div>
+            <div class="col-6 right-border" id = "classID">
+                {{ cardClassId }}
+            </div>
+            <div class="col-6" id = "prof">
+                {{ cardProfName }}
+            </div>
+        </div>
+        <div class="row cardRow bodyText">
+            <div class="col" id = "body">
+                {{ cardBody }}
+            </div>
+        </div>
+    </div>
+
+    <transition name="fade" appear>
+        <div class="modal-overlay" v-if="showModal" @click="showModal=false"/>
+    </transition>
+    <transition name="slide" appear>
+        <div class="modal" v-if="showModal" @click="showModal=false">
+            {{ cardTitle }}
+            {{ cardRating }}
+            {{ cardClassName }}
+            {{ cardClassId }}
+            {{ cardProfName }}
+            {{ cardBody }}
+        </div>
+    </transition>
+
 </template>
 
 <script>
@@ -58,7 +71,7 @@
                 // cardBody: '',
                 // cardCredibility: '',
                 // reviews: [],
-                // showModal: false,
+                showModal: false,
             }
         },
         props: {
@@ -95,10 +108,33 @@
         left: 0;
         right: 0;
         bottom: 0;
-        z-index: 9999999;
+        z-index: 98;
         background-color: rgba(0, 0, 0, 0.3);
     }
 
+    .modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 99;
+
+        width: 100%;
+        max-width: 400px;
+        height: 400px;
+        background-color: white;
+        border-radius: 10px;
+    }
+
+    .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .fade-enter-from,
+    .fade-leave-to {
+        opacity: 0;
+    }
 
     .topRow {
         background-color: var(--card-title);
