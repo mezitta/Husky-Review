@@ -8,9 +8,29 @@ const reviewRoute = express.Router();
 let api_url = 'http://' + destination.ip + '/api.php';
 let ReviewModel = require('../models/review');
 
-// TODO: Filter reviews by query string.
-reviewRoute.route('/').get((req, res) => {
-    ReviewModel.find((error, data) => {
+// Filter reviews not containing query string.
+reviewRoute.route('/').get((req, res, next) => {
+    // Match everything by default.
+    let query = {};
+    // Prepare request.
+    if (req.query.q) {
+        // Use same options for each field.
+        let search = {
+            $regex: req.query.q,
+            $options: 'i' // Case-insensitivity.
+        };
+        query = {
+            // Include fields in search domain.
+            $or: [
+                { 'class_id': search },
+                { 'class_name': search },
+                { 'prof': search },
+                { 'title': search }
+            ]
+        };
+    }
+    // Submit request.
+    ReviewModel.find(query, (error, data) => {
         if (error) {
             return next(error)
         } else {
