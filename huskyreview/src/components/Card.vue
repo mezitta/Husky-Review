@@ -41,12 +41,13 @@
     <transition name="slide-fade" appear>
         <div class="cardModal" v-if="showModal">
             <div class="fluid-container">
-                <div class="row modalRow">
+                <div class="row modalRow modalTitleRow">
                     <div class="col-11 modalTitle"><h2>{{ cardTitle }}</h2></div>
                     <div class="col-1 text-end modalExit" @click="showModal=false"><i class="fa-solid fa-xmark"></i></div>
                 </div>
-                <div class="row modalRow">
-                    <div class="col modalRating">
+                <div class="row modalRow modalRatingRow">
+                    <div class="col d-flex align-items-center modalRating">
+                        <span class="modalCardRating">{{ cardRating }}</span>
                         <div class="modalStars">
                             <span v-for="(n, i) in Math.floor(cardRating)" v-bind:key="(n, i)" class="cardStar"><i class="fa-solid fa-star" /></span>
                             <span v-if="cardRating % 1 != 0" class="cardStar">
@@ -54,9 +55,6 @@
                             </span>
                             <span v-for="(n, i) in (5 - Math.floor(cardRating))" v-bind:key="(n, i)" class="cardStarFill"><i class="fa-solid fa-star" /></span>
                         </div>
-                        <span class="cardRating">
-                            {{ cardRating }}
-                        </span>
                     </div>
                 </div>
                 <div class="row modalRow">
@@ -155,6 +153,14 @@
 
     .modalExit {
         cursor: pointer;
+        color: rgb(119, 119, 119);
+        height: 1px;
+        transition: all 0.3s;
+    }
+
+    .modalExit:hover {
+        color: rgb(73, 73, 73);
+        text-shadow: 1px 1px 1px grey;
     }
 
     .slide-fade-enter-active,
@@ -179,7 +185,7 @@
 
     .topRow {
         background-color: var(--card-title);
-        border-radius: 20px 20px 0 0;
+        border-radius: 10px 10px 0 0;
         min-height: 12%;
         display: inline-flex;
         align-items: center;
@@ -206,7 +212,7 @@
         display: inline-flex;
 
         background-color: rgb(255,255,255);
-        border-radius: 20px;
+        border-radius: 10px;
         box-shadow: 0px 0px 10px var(--card-shadow);
 
         position: relative;
@@ -228,6 +234,11 @@
 
             margin-left: 0;
             margin-right: 0;
+        }
+
+        .topRow {
+            height: 25%;
+            padding-bottom: 0.1em;
         }
 
         .modalBodyText {
@@ -260,8 +271,6 @@
         -ms-oveflow-style: none;
         display: none;
     }
-
-    
 
     .cardRow {
         color: black;
@@ -313,6 +322,12 @@
         font-weight: bold;
     }
 
+    .modalCardRating {
+        font-size: 1.75em;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
     .stars {
         display: inline;
     }
@@ -320,10 +335,20 @@
     .modalStars {
         display: inline;
         text-align: left;
+        width: 100%;
     }
 
     .modalRating {
         padding: 0;
+    }
+
+    .modalTitleRow {
+        margin-bottom: 0;
+    }
+
+    .modalRatingRow {
+        font-size: 1.25em;
+        padding-left: 0.75em;
     }
 
     .modalTitle {
