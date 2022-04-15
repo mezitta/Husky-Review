@@ -18,10 +18,10 @@
             </div>
         </div>
         <div class="row bottom-margin cardRow cardInfo">
-            <div class="col-4 right-border" id="className">
+            <div class="col-3 right-border" id="className">
                 {{ cardClassName }}
             </div>
-            <div class="col-6 right-border" id="classID">
+            <div class="col-3 right-border" id="classID">
                 {{ cardClassId }}
             </div>
             <div class="col-6" id="prof">
@@ -179,14 +179,7 @@
         opacity: 0;
     }
 
-    .topRow {
-        /* background-color: var(--card-title); */
-        border-radius: 10px 10px 0 0;
-        min-height: 12%;
-        display: inline-flex;
-        align-items: center;
-        overflow: hidden;
-    }
+    
 
     #title {
         font-weight: bold;
@@ -277,6 +270,10 @@
         font-size: 0.85em;
     }
 
+    .cardInfo {
+        color: rgb(85, 85, 85);
+    }
+
     .modalRow {
         padding: 0 1em 0 1em;
     }
@@ -299,6 +296,17 @@
     .bottom-margin { 
         margin-bottom:0px; 
         box-shadow: 0px 2px 2px var(--main-back-dark);
+    }
+
+    .topRow {
+        /* background-color: var(--card-title); */
+        box-shadow: none;
+        border-radius: 10px 10px 0 0;
+        padding-top: 2%;
+        min-height: 8%;
+        display: inline-flex;
+        align-items: center;
+        overflow: hidden;
     }
 
     .bottom-row-margin { 
