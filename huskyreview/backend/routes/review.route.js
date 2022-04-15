@@ -12,6 +12,9 @@ let ReviewModel = require('../models/review');
 reviewRoute.route('/').get((req, res, next) => {
     // Match everything by default.
     let query = {};
+    // Sort from most to least recent.
+    let reverse = '-';
+    let sort = '_id';
     // Prepare request.
     if (req.query.q) {
         // Use same options for each field.
@@ -29,8 +32,16 @@ reviewRoute.route('/').get((req, res, next) => {
             ]
         };
     }
+    // Invert sorting order when r=1.
+    if (req.query.r && req.query.r > 0) {
+        reverse = '';
+    }
+    // Allow client to choose "sort by" field.
+    if (req.query.s) {
+        sort = req.query.s;
+    }
     // Submit request.
-    ReviewModel.find(query, (error, data) => {
+    ReviewModel.find(query).sort(reverse + sort).exec((error, data) => {
         if (error) {
             return next(error)
         } else {
