@@ -41,13 +41,25 @@
     <transition name="slide-fade" appear>
         <div class="cardModal" v-if="showModal">
             <div class="fluid-container">
+                <div class="row modalExitRow">
+                    <div class="col text-end modalExit" @click="showModal=false"><i class="fa-solid fa-xmark"></i></div>
+                </div>
                 <div class="row modalRow modalTitleRow">
                     <div class="col-11 modalTitle"><h2>{{ cardTitle }}</h2></div>
-                    <div class="col-1 text-end modalExit" @click="showModal=false"><i class="fa-solid fa-xmark"></i></div>
+                </div>
+                <div class="row modalRow modalSubtTitleRow">
+                    <div class="col-3 modalSubTitle modalSubTitleLeft">
+                        {{ cardClassId }}
+                    </div>
+                    <div class="col modalSubTitle">
+                        {{ cardProfName }}
+                    </div>
+                </div>
+                <div class="row modalRow modalNumberRow">
+                    <span class="modalCardRating">{{ cardRating }}</span>
                 </div>
                 <div class="row modalRow modalRatingRow">
                     <div class="col d-flex align-items-center modalRating">
-                        <span class="modalCardRating">{{ cardRating }}</span>
                         <div class="modalStars">
                             <span v-for="(n, i) in Math.floor(cardRating)" v-bind:key="(n, i)" class="cardStar"><i class="fa-solid fa-star" /></span>
                             <span v-if="cardRating % 1 != 0" class="cardStar">
@@ -57,12 +69,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row modalRow">
-                    Class: {{ cardClassId }}
-                </div>
-                <div class="row modalRow">
-                     Professor: {{ cardProfName }}
-                </div>
+                
                 <div class="row modalRow modalBodyText">
                      {{ cardBody }}
                 </div>
@@ -146,23 +153,12 @@
         width: 95%;
         max-width: 700px;
         height: 90%;
-        padding: 1em;
+        padding: 0.5em 1em 1em 1em;
         background-color: rgb(255,255,255);;
         border-radius: 10px;
     }
 
-    .modalExit {
-        cursor: pointer;
-        color: rgb(119, 119, 119);
-        height: 1px;
-        transition: all 0.3s;
-    }
-
-    .modalExit:hover {
-        color: rgb(73, 73, 73);
-        text-shadow: 1px 1px 1px grey;
-    }
-
+    
     .slide-fade-enter-active,
     .slide-fade-leave-active {
         transition: transform 0.3s ease-in-out;
@@ -184,12 +180,16 @@
     }
 
     .topRow {
-        background-color: var(--card-title);
+        /* background-color: var(--card-title); */
         border-radius: 10px 10px 0 0;
         min-height: 12%;
         display: inline-flex;
         align-items: center;
         overflow: hidden;
+    }
+
+    #title {
+        font-weight: bold;
     }
 
     .row {
@@ -325,7 +325,7 @@
     .modalCardRating {
         font-size: 1.75em;
         font-weight: bold;
-        margin-right: 10px;
+        padding-left: 0;
     }
 
     .stars {
@@ -349,10 +349,48 @@
     .modalRatingRow {
         font-size: 1.25em;
         padding-left: 0.75em;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(68, 68, 68, 0.5);
+    }
+
+    .modalNumberRow {
+        margin-bottom: 0;
+    }
+
+    .modalSubtTitleRow {
+        margin-bottom: 10px;
+    }
+
+    .modalExitRow {
+        height: 10px;
+        text-align: right;
+        margin-bottom: 10px;
+    }
+
+    .modalExit {
+        cursor: pointer;
+        color: rgb(119, 119, 119);
+        height: 1px;
+        transition: all 0.3s;
+    }
+
+    .modalExit:hover {
+        color: rgb(73, 73, 73);
+        text-shadow: 1px 1px 1px grey;
     }
 
     .modalTitle {
         padding: 0;
+    }
+
+    .modalSubTitle {
+        text-align: left;
+        padding-left: 0.1em;
+        color: rgb(85, 85, 85);
+    }
+
+    .modalSubTitleLeft {
+        max-width: 100px;
     }
 
     #className {
