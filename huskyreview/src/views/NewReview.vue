@@ -99,47 +99,50 @@ export default {
         }
     },
     methods: {
-        cleanBody() {
-            const badWords = ["word", "bad"];
-            let splitBodyNormal = this.addBody.split(/\s+/);
-            let splitBody = this.addBody.toLowerCase().split(/\s+/);
-            for (let i = 0 ; i < splitBodyNormal.length ; i ++) {
-                for(let b = 0 ; b < badWords.length ; b ++) {
-                    console.log(splitBody[i] + " comapared to " + badWords[b] + "    " + (splitBody[i] == badWords[b]));
-                    if(splitBody[i] == badWords[b]) {
-                        console.log("it worked");
-                        splitBodyNormal[i] = "";
-                        for(let j = 0 ; j < splitBody[i].length ; j ++) {
-                            splitBodyNormal[i] += "*"; 
-                            console.log("working");
-                        }
-                    }
-
-                }
-            }
-            this.addBody="";
-            for (let i = 0 ; i < splitBodyNormal.length ; i ++) {
-                this.addBody += splitBodyNormal[i];
-                this.addBody += " ";
-            }
-        },
+        //cleanBody() {
+        //    const badWords = ["word", "bad"];
+        //    let splitBodyNormal = this.addBody.split(/\s+/);
+        //    let splitBody = this.addBody.toLowerCase().split(/\s+/);
+        //    for (let i = 0 ; i < splitBodyNormal.length ; i ++) {
+        //        for(let b = 0 ; b < badWords.length ; b ++) {
+        //            console.log(splitBody[i] + " comapared to " + badWords[b] + "    " + (splitBody[i] == badWords[b]));
+        //            if(splitBody[i] == badWords[b]) {
+        //                console.log("it worked");
+        //                splitBodyNormal[i] = "";
+        //                for(let j = 0 ; j < splitBody[i].length ; j ++) {
+        //                    splitBodyNormal[i] += "*"; 
+        //                    console.log("working");
+        //                }
+        //            }
+        //        }
+        //    }
+        //    this.addBody="";
+        //    for (let i = 0 ; i < splitBodyNormal.length ; i ++) {
+        //        this.addBody += splitBodyNormal[i];
+        //        this.addBody += " ";
+        //    }
+        //},
         cleanText(text) {
             const badWords = ["word", "bad"];
+            let replacement = "";
             let textLower = text.toLowerCase()
             let same = true;
             for (let i = 0 ; i < badWords.length ; i ++) {
                 if (textLower.includes(badWords[i])) {
+                    //console.log(badWords[i]textLower.includes(badWords[i]));
                     for(let j = 0 ; j < text.length ; j ++) {
-                        for(let b = 0 ; b < badWords.length ; b ++) { 
-                            if(textLower[i + b] != badWords[b]) {
+                        for(let b = 0 ; b < badWords[i].length ; b ++) { 
+                            if(textLower[j + b] != badWords[i][b]) {
                                 same = false;
                                 continue;
                             }
                         }
                         if (same) {
-                            for(let b = 0 ; b < badWords.length ; b ++) {
-                                text[i + b] = "*";
+                            for(let b = 0 ; b < badWords[i].length ; b ++) {
+                                replacement += "*"
                             }
+                            text = text.substring(0, j) + replacement + text.substring(j+badWords[i].length);
+                            replacement = "";
                         }
                         same = true;
                     }
@@ -150,8 +153,7 @@ export default {
         submitForm(e) {
             // Collect any regular HTML form input across entire page.
             const formData = new FormData(e.target);
-            this.cleanBody();
-            //this.addBody = cleanText(this.addBody);
+            this.addBody = this.cleanText(this.addBody);
             axios.post('http://' + destination.ip + ':4000/api/add-review', {
                 title:  this.addTitle,
                 prof:   this.addProf,
