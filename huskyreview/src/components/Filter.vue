@@ -86,6 +86,7 @@ button.btn.btn-warning:focus {
 
 .CID:hover, .Prof:hover, .dept:hover {
   color: white;
+  background-color: var(--husky-yellow);
   opacity: 0.95;
 }
 

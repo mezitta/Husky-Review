@@ -1,6 +1,6 @@
 <template>
     <div class="container card" @click="showModal=true">
-        <div class="row justify-content-end bottom-margin top-row-margin cardRow topRow">
+        <div class="row justify-content-end bottom-margin top-row-margin cardRow topRow cardHeader">
             <div class="col" id="title" >
                 {{ cardTitle }}
             </div>
@@ -17,7 +17,7 @@
                 </span>
             </div>
         </div>
-        <div class="row bottom-margin cardRow cardInfo">
+        <div class="row bottom-margin cardRow cardInfo cardHeader">
             <div class="col-3 right-border" id="className">
                 {{ cardClassName }}
             </div>
@@ -234,6 +234,10 @@
             padding-bottom: 0.1em;
         }
 
+        #title {
+            font-size: 0.9em;
+        }
+
         .modalBodyText {
             height: 50vh;
             overflow: auto;
@@ -309,6 +313,10 @@
         overflow: hidden;
     }
 
+    /* .cardHeader {
+        background-color: var(--husky-yellow);
+    } */
+
     .bottom-row-margin { 
         margin-bottom:0px; 
     }
@@ -366,7 +374,7 @@
     }
 
     .modalSubtTitleRow {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
 
     .modalExitRow {
