@@ -99,9 +99,39 @@ export default {
         }
     },
     methods: {
+        cleanText(text) {
+            const badWords = ["word", "bad", "shit"];
+            let replacement = "";
+            let textLower = text.toLowerCase()
+            let same = true;
+            for (let i = 0 ; i < badWords.length ; i ++) {
+                if (textLower.includes(badWords[i])) {
+                    //console.log(badWords[i]textLower.includes(badWords[i]));
+                    for(let j = 0 ; j < text.length ; j ++) {
+                        for(let b = 0 ; b < badWords[i].length ; b ++) { 
+                            if(textLower[j + b] != badWords[i][b]) {
+                                same = false;
+                                continue;
+                            }
+                        }
+                        if (same) {
+                            for(let b = 0 ; b < badWords[i].length ; b ++) {
+                                replacement += "*"
+                            }
+                            text = text.substring(0, j) + replacement + text.substring(j+badWords[i].length);
+                            replacement = "";
+                        }
+                        same = true;
+                    }
+                }
+            }
+            return text;
+        },
         submitForm(e) {
             // Collect any regular HTML form input across entire page.
             const formData = new FormData(e.target);
+            this.addBody = this.cleanText(this.addBody);
+            this.addTitle = this.cleanText(this.addTitle);
             axios.post('http://' + destination.ip + ':4000/api/add-review', {
                 title:  this.addTitle,
                 prof:   this.addProf,
