@@ -99,31 +99,8 @@ export default {
         }
     },
     methods: {
-        //cleanBody() {
-        //    const badWords = ["word", "bad"];
-        //    let splitBodyNormal = this.addBody.split(/\s+/);
-        //    let splitBody = this.addBody.toLowerCase().split(/\s+/);
-        //    for (let i = 0 ; i < splitBodyNormal.length ; i ++) {
-        //        for(let b = 0 ; b < badWords.length ; b ++) {
-        //            console.log(splitBody[i] + " comapared to " + badWords[b] + "    " + (splitBody[i] == badWords[b]));
-        //            if(splitBody[i] == badWords[b]) {
-        //                console.log("it worked");
-        //                splitBodyNormal[i] = "";
-        //                for(let j = 0 ; j < splitBody[i].length ; j ++) {
-        //                    splitBodyNormal[i] += "*"; 
-        //                    console.log("working");
-        //                }
-        //            }
-        //        }
-        //    }
-        //    this.addBody="";
-        //    for (let i = 0 ; i < splitBodyNormal.length ; i ++) {
-        //        this.addBody += splitBodyNormal[i];
-        //        this.addBody += " ";
-        //    }
-        //},
         cleanText(text) {
-            const badWords = ["word", "bad"];
+            const badWords = ["word", "bad", "shit"];
             let replacement = "";
             let textLower = text.toLowerCase()
             let same = true;
@@ -154,6 +131,7 @@ export default {
             // Collect any regular HTML form input across entire page.
             const formData = new FormData(e.target);
             this.addBody = this.cleanText(this.addBody);
+            this.addTitle = this.cleanText(this.addTitle);
             axios.post('http://' + destination.ip + ':4000/api/add-review', {
                 title:  this.addTitle,
                 prof:   this.addProf,
