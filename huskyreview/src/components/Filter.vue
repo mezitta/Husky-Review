@@ -37,7 +37,7 @@
 
         <div class="input-group" id="mobileGroup">
           <input type="search" id="form1" class="form-control" placeholder="Search Reviews"/>
-          <button type="button" class="btn btn-outline-warning search">
+          <button type="button" class="btn btn-warning search">
             Search
           </button>
         </div>
@@ -45,8 +45,8 @@
 
       <div class="col filterOptions">
         <div class="input-group" id="desktopGroup">
-            <input type="search" id="form1" class="form-control" placeholder="Search Reviews"/>
-          <button type="button" class="btn btn-outline-warning search">
+            <input type="search" id="form1" class="form-control shadow-none" placeholder="Search Reviews"/>
+          <button type="button" class="btn btn-warning search">
               Search
           </button>
         </div>
@@ -73,6 +73,10 @@ button.btn.btn-warning.Prof, button.btn.btn-warning.CID {
   border-right-color: var(--border-yellow);
 }
 
+button.btn.btn-warning:focus {
+  box-shadow: inset 0 -1px 0 #ddd;
+}
+
 .CID, .Prof, .dept
 {
   background-color: var(--husky-yellow);
@@ -82,6 +86,7 @@ button.btn.btn-warning.Prof, button.btn.btn-warning.CID {
 
 .CID:hover, .Prof:hover, .dept:hover {
   color: white;
+  background-color: var(--husky-yellow);
   opacity: 0.95;
 }
 
@@ -107,6 +112,10 @@ button.btn.btn-warning.Prof, button.btn.btn-warning.CID {
 
 #form1.form-control {
   display: inline-flex;
+}
+
+input[type=search]:focus {
+  box-shadow: inset 0 -1px 0 #ddd;
 }
 
 @media only screen and (min-width: 600px) {
