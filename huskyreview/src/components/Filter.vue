@@ -12,20 +12,25 @@
         <div class="col filterOptions">
           <div class="btn-group" role="group">
             <button
+              @click="sortBy = 'cid'"
               type="button"
               class="btn btn-warning CID"
               data-bs-toggle="button"
             >
               Class ID
             </button>
+
             <button
+              @click="sortBy = 'prof'"
               type="button"
               class="btn btn-warning Prof"
               data-bs-toggle="button"
             >
               Professor
             </button>
+
             <button
+              @click="sortBy = 'rating'"
               type="button"
               class="btn btn-warning dept"
               data-bs-toggle="button"
@@ -34,30 +39,73 @@
             </button>
           </div>
           <div class="input-group" id="mobileGroup">
-            <input type="search" id="form1" class="form-control" placeholder="Search Reviews"/>
-            <button type="button" class="btn btn-warning search">
+            <input type="search"
+            id="form1" 
+            v-model="searchFilter" 
+            v-on:input="(event) => this.$emit('inputChange', event)"
+            class="form-control" 
+            placeholder="Search Reviews"/>
+            <button type="button" @click="filterPosts(); filter=true" class="btn btn-warning search">
               Search
             </button>
           </div>
         </div>
 
-          <div class="col filterOptions">
-            <div class="input-group" id="desktopGroup">
-              <input type="search" id="form1" class="form-control shadow-none" placeholder="Search Reviews"/>
-              <button type="submit" class="btn btn-warning search">
-                  Search
-              </button>
-            </div>
+        <div class="col filterOptions">
+          <div class="input-group" id="desktopGroup">
+            <input type="search"
+            id="form1" 
+            v-model="searchFilter" 
+            v-on:input="(event) => this.$emit('inputChange', event)"
+            class="form-control shadow-none" 
+            placeholder="Search Reviews"/>
+            <button type="button" @click="filterPosts(); filter=true" class="btn btn-warning search">
+                Search
+            </button>
           </div>
+        </div>
       </div>
     </form>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+import { destination } from '../destination';
+
 export default {
   name: "filter-bar",
-};
+
+  data() {
+    return {
+      searchFilter: '',
+      sortBy: '',
+      sortOrder: 0,
+      filteredResults: [],
+      filter: false,
+    }
+  },
+  methods: {
+    filterPosts () {
+      axios.get('http://' + destination.ip + ':4000/api', {
+        params: {
+          q: this.searchFilter,
+          r: this.sortOrder,
+          s: this.sortBy
+        }
+      }).then (response => {
+        this.filteredResults = response.data
+        this.testResults = response.data
+        this.$emit('changeValue', this.testResults)
+        this.$emit('toggleFilter', this.filter)
+        console.log(this.filter)
+        // console.log(this.filteredResults)
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+  }
+}
 </script>
 
 <style scoped>
