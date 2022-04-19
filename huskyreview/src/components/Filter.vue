@@ -1,57 +1,56 @@
 <template>
   <div class="container-fluid filter">
-    <div class="row row-cols-auto justify-content-center  align-items-center filterBorder">
-      
-      <div class="col">
-        <h5 class="text-center text-dark">
-            <strong> Filter by: </strong>
-        </h5>
-      </div>
+    <form>
+      <div class="row row-cols-auto justify-content-center  align-items-center filterBorder">
 
-      <div class="col filterOptions">
-        <div class="btn-group" role="group">
-          <button
-            type="button"
-            class="btn btn-warning CID"
-            data-bs-toggle="button"
-          >
-            Class ID
-          </button>
-
-          <button
-            type="button"
-            class="btn btn-warning Prof"
-            data-bs-toggle="button"
-          >
-            Professor
-          </button>
-
-          <button
-            type="button"
-            class="btn btn-warning dept"
-            data-bs-toggle="button"
-          >
-            Department
-          </button>
+        <div class="col">
+          <h5 class="text-center text-dark">
+              <strong> Filter by: </strong>
+          </h5>
         </div>
 
-        <div class="input-group" id="mobileGroup">
-          <input type="search" id="form1" class="form-control" placeholder="Search Reviews"/>
-          <button type="button" class="btn btn-warning search">
-            Search
-          </button>
-        </div>
-      </div>
-
-      <div class="col filterOptions">
-        <div class="input-group" id="desktopGroup">
-            <input type="search" id="form1" class="form-control shadow-none" placeholder="Search Reviews"/>
-          <button type="button" class="btn btn-warning search">
+        <div class="col filterOptions">
+          <div class="btn-group" role="group">
+            <button
+              type="button"
+              class="btn btn-warning CID"
+              data-bs-toggle="button"
+            >
+              Class ID
+            </button>
+            <button
+              type="button"
+              class="btn btn-warning Prof"
+              data-bs-toggle="button"
+            >
+              Professor
+            </button>
+            <button
+              type="button"
+              class="btn btn-warning dept"
+              data-bs-toggle="button"
+            >
+              Rating
+            </button>
+          </div>
+          <div class="input-group" id="mobileGroup">
+            <input type="search" id="form1" class="form-control" placeholder="Search Reviews"/>
+            <button type="button" class="btn btn-warning search">
               Search
-          </button>
+            </button>
+          </div>
         </div>
+
+          <div class="col filterOptions">
+            <div class="input-group" id="desktopGroup">
+              <input type="search" id="form1" class="form-control shadow-none" placeholder="Search Reviews"/>
+              <button type="submit" class="btn btn-warning search">
+                  Search
+              </button>
+            </div>
+          </div>
       </div>
-    </div>
+    </form>
   </div>
 </template>
 

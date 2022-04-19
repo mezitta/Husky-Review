@@ -16,11 +16,6 @@
         <form v-on:submit.prevent="submitForm" v-if="!submitSuccess">
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
-                <input type="text" placeholder="Class Name" required v-model="addClassName" id="className">
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-sm-5 d-flex justify-content-center">
                 <input type="text" placeholder="Class ID" required v-model="addClassId" id="classId">
             </div>
         </div>
@@ -89,7 +84,6 @@ export default {
             addTitle: '',
             addProf: '',
             addClassId: '',
-            addClassName: '',
             addBody: '',
             addRating: 0,
             submitSuccess: false,
@@ -144,7 +138,6 @@ export default {
                 title:  this.addTitle,
                 prof:   this.addProf,
                 class_id:   this.addClassId,
-                class_name: this.addClassName,
                 body:   this.addBody,
                 rating: this.addRating,
                 captcheck_selected_answer: formData.get('captcheck_selected_answer'),
@@ -157,7 +150,6 @@ export default {
                 this.addTitle = '';
                 this.addProf = '';
                 this.addClassId = '';
-                this.addClassName = '';
                 this.addBody = '';
                 this.addRating = 0;
             })

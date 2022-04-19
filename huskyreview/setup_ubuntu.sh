@@ -5,12 +5,16 @@ sudo apt install apache2 composer mariadb-server-10.3 mongodb php7.4 php7.4-gd p
 npm install && cd backend && npm install && cd ..
 git submodule init && git submodule update
 cd Captcheck && composer install && cd ..
-echo "Configuring web server and databases..."
 
+# Force refresh of Banweb data.
+mongo --eval "db.courses.deleteMany({})" huskyreview
+
+echo "Configuring web server and databases..."
 # Don't set 'root password', but accept other defaults.
 printf '\nn\n\n\n\n\n' | sudo mysql_secure_installation
 
 # Initialize CAPTCHA database.
+# Warning: Production servers should modify/replace the demo challenges.
 sudo mariadb < Captcheck/database.sql
 sudo mariadb -e "CREATE USER IF NOT EXISTS 'huskyreview'@'localhost' IDENTIFIED BY 'huskyreview';"
 sudo mariadb -e "GRANT ALL ON captcheck.* TO 'huskyreview'@'localhost';"

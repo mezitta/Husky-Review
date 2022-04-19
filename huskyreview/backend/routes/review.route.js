@@ -6,6 +6,7 @@ const reviewRoute = express.Router();
 
 //let api_url = 'https://captcheck.netsyms.com/api.php';
 let api_url = 'http://' + destination.ip + '/api.php';
+let CourseModel = require('../models/course');
 let ReviewModel = require('../models/review');
 
 // Filter reviews not containing query string.
@@ -50,7 +51,7 @@ reviewRoute.route('/').get((req, res, next) => {
     })
 })
 
-// TODO: Retrieve class_name from Banweb by class_id?
+// TODO: Return class_name to client for real-time display.
 reviewRoute.route('/add-review').post(async (req, res, next) => {
     if (req.body.captcheck_selected_answer === null) {
         // Prevent spurious request if no answer is selected.
@@ -69,13 +70,32 @@ reviewRoute.route('/add-review').post(async (req, res, next) => {
             console.log(error);
         })
         if (captcha.data.result) {
-            ReviewModel.create(req.body, (error, data) => {
-                if (error) {
-                    return next(error)
-                } else {
-                    res.json(data)
-                }
-            })
+            let review = req.body;
+            // Validate class_id.
+            if (review.class_id === null) {
+                res.status(400).send('Null class ID.');
+            } else {
+                let search = {
+                    'class_id': review.class_id.toUpperCase()
+                };
+                CourseModel.findOne(search, (error, course) => {
+                    if (error) {
+                        return next(error);
+                    } else if (!course) {
+                        res.status(400).send('"' + review.class_id + '" is not a class ID we recognize.');
+                    } else {
+                        // Use canonical name.
+                        review.class_name = course.title;
+                        ReviewModel.create(review, (error, data) => {
+                            if (error) {
+                                return next(error);
+                            } else {
+                                res.json(data);
+                            }
+                        });
+                    }
+                });
+            }
         } else {
             res.status(400).json(captcha.data.msg) // Session invalid.
         }

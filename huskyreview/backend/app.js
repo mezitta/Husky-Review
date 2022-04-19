@@ -2,8 +2,10 @@ let express = require('express'),
     cors = require('cors'),
     mongoose = require('mongoose'),
     database = require('./database'),
-    bodyParser = require('body-parser');
-    createError = require('http-errors');
+    bodyParser = require('body-parser'),
+    createError = require('http-errors'),
+    CourseModel = require('./models/course'),
+    { getAllSections } = require('@mtucourses/scraper');
 
 //Connect mongoDB
 mongoose.Promise = global.Promise;
@@ -12,11 +14,29 @@ mongoose.connect(database.db, {
     useUnifiedTopology: true
 }).then(() => {
     console.log("Database connected")
+
+    // Only scrape Banweb if no data is available locally.
+    CourseModel.find({}).count(async (error, count) => {
+        if (error) {
+            console.log(error);
+        } else if (count < 1) {
+            const term = new Date();
+            // Submit date equivalent to "last July".
+            term.setFullYear(term.getFullYear() - 1, 7);
+
+            const courses = await getAllSections(term);
+            courses.forEach((course) => {
+                CourseModel.create({
+                    class_id: course.subject + course.crse,
+                    title: course.title
+                });
+            });
+        }
+    });
 },
 error => {
     console.log("Database couldn't be connected to: " + error)
-    }
-)
+});
 
 const reviewtoEndPoint = require('../backend/routes/review.route')
 const app = express();
