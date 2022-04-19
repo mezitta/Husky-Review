@@ -106,7 +106,6 @@ export default {
             let same = true;
             for (let i = 0 ; i < badWords.length ; i ++) {
                 if (textLower.includes(badWords[i])) {
-                    //console.log(badWords[i]textLower.includes(badWords[i]));
                     for(let j = 0 ; j < text.length ; j ++) {
                         for(let b = 0 ; b < badWords[i].length ; b ++) { 
                             if(textLower[j + b] != badWords[i][b]) {
@@ -130,6 +129,15 @@ export default {
         submitForm(e) {
             // Collect any regular HTML form input across entire page.
             const formData = new FormData(e.target);
+
+            //var xmlhttp = new XMLHttpRequest();
+            //xmlhttp.open('GET', filePath, false);
+            //xmlhttp.send();
+            //const reader = new FileReader();
+            //reader.onload = function (event) {
+            //    const text = e.target.result;
+            //    document.write(text);
+            //};
             this.addBody = this.cleanText(this.addBody);
             this.addTitle = this.cleanText(this.addTitle);
             axios.post('http://' + destination.ip + ':4000/api/add-review', {
