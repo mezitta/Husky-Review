@@ -1,5 +1,4 @@
 const axios = require('axios').default;
-const destination = require('../destination.js');
 const express = require('express');
 const { nextTick } = require('vue');
 const reviewRoute = express.Router();
@@ -7,7 +6,7 @@ const reviewRoute = express.Router();
 const safe = require('safe-regex');
 
 //let api_url = 'https://captcheck.netsyms.com/api.php';
-let api_url = 'http://' + destination.ip + '/api.php';
+let api_url = 'http://localhost/api.php';
 let CourseModel = require('../models/course');
 let ReviewModel = require('../models/review');
 
