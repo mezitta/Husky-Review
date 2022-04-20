@@ -94,6 +94,7 @@ export default {
     },
     methods: {
         cleanText(text, badWords) {
+            const badWords = ["bad", "word"]
             let replacement = "";
             let textLower = text.toLowerCase()
             let same = true;
@@ -123,14 +124,14 @@ export default {
             // Collect any regular HTML form input across entire page.
             const formData = new FormData(e.target);
 
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.open('GET', "badWords.csv", false);
-            xmlhttp.send();
-            xmlhttp.responseType = 'text';
-            const badWords = xmlhttp.responseText.toLowerCase().split(",");
+            //var xmlhttp = new XMLHttpRequest();
+            //xmlhttp.open('GET', "huskyreview/src/assets/badWords - Sheet1.csv", false);
+            //xmlhttp.send();
+            //xmlhttp.responseType = 'text';
+            //const badWords = xmlhttp.responseText.toLowerCase().split(",");
 
-            this.addBody = this.cleanText(this.addBody, badWords);
-            this.addTitle = this.cleanText(this.addTitle, badWords);
+            this.addBody = this.cleanText(this.addBody);
+            this.addTitle = this.cleanText(this.addTitle);
             axios.post('http://' + destination.ip + ':4000/api/add-review', {
                 title:  this.addTitle,
                 prof:   this.addProf,
