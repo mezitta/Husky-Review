@@ -1,5 +1,4 @@
 <template>
-    
     <div class="container-fluid home">
         <div class="topPage">
             <Nav />
@@ -22,8 +21,8 @@
                 </div>
             </div>
         </div>
-        <Filter/>
-        <Reviews />
+        <Filter ref="filterbar" @changeValue="updateFilter" @toggleFilter="updateToggle"/>
+        <Reviews :filteredReviews="reviewResults" :filter="filterToggle"/>
     </div>
 </template>
 
@@ -31,13 +30,30 @@
     import Filter from "../components/Filter"
     import Nav from "../components/Nav"
     import Reviews from "../components/Reviews"
+
     export default {
         name: 'Home-page',
+
         components: {
             Filter,
             Nav,
             Reviews
-        }
+        },
+        data() {
+            return {
+                reviewResults: [],
+                filterToggle: false
+            }
+        },
+        methods: {
+            updateFilter(testResults) {
+                this.reviewResults = testResults
+            },
+
+            updateToggle(toggle) {
+                this.filterToggle = toggle;
+            }
+        },
     };
 </script>
 
