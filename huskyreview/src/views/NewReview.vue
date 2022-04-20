@@ -55,9 +55,9 @@
         <div class="row justify-content-center captchaContainer">
             <CaptchaContainer :key="reloadCaptcha" />
         </div>
-		<div class="row justify-content-center" style="color:red" v-if="!captchaSuccess">
-			Invalid response. Please try again.
-		</div>
+        <div class="row justify-content-center" style="color:red" v-if="!captchaSuccess">
+            Invalid response or Class ID. Please try again.
+        </div>
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary" id="makeReview">Create Review</button>
@@ -93,7 +93,7 @@ export default {
             countdownText: '',
             timeleft: 10,
             reloadCaptcha: 0,
-			captchaSuccess: true
+            captchaSuccess: true
         }
     },
     methods: {
@@ -159,7 +159,7 @@ export default {
                 // Regenerate CAPTCHA after failure invalidates session.
                 this.reloadCaptcha += 1;
                 console.log(error)
-				this.captchaSuccess = false;
+                this.captchaSuccess = false;
             })
         },
 
