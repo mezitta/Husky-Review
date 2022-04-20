@@ -93,8 +93,7 @@ export default {
         }
     },
     methods: {
-        cleanText(text) {
-            const badWords = ["word", "bad", "shit"];
+        cleanText(text, badWords) {
             let replacement = "";
             let textLower = text.toLowerCase()
             let same = true;
@@ -124,16 +123,14 @@ export default {
             // Collect any regular HTML form input across entire page.
             const formData = new FormData(e.target);
 
-            //var xmlhttp = new XMLHttpRequest();
-            //xmlhttp.open('GET', filePath, false);
-            //xmlhttp.send();
-            //const reader = new FileReader();
-            //reader.onload = function (event) {
-            //    const text = e.target.result;
-            //    document.write(text);
-            //};
-            this.addBody = this.cleanText(this.addBody);
-            this.addTitle = this.cleanText(this.addTitle);
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open('GET', "badWords.csv", false);
+            xmlhttp.send();
+            xmlhttp.responseType = 'text';
+            const badWords = xmlhttp.responseText.toLowerCase().split(",");
+
+            this.addBody = this.cleanText(this.addBody, badWords);
+            this.addTitle = this.cleanText(this.addTitle, badWords);
             axios.post('http://' + destination.ip + ':4000/api/add-review', {
                 title:  this.addTitle,
                 prof:   this.addProf,
