@@ -3,6 +3,28 @@
     <form>
       <div class="row row-cols-auto justify-content-center  align-items-center filterBorder">
 
+        <div class="col filterOptions">
+        <div class="btn-group left" role="group">
+            <button
+              @click="filter=false, sortOrder = 0, filterPosts()"
+              type="button"
+              class="btn btn-warning Clr"
+              data-bs-toggle="button"
+            >
+            Clear Filter
+            </button>
+
+            <button
+              @click="sortBy='', swapOrder(), filter=true, filterPosts()"
+              type="button"
+              class="btn btn-warning Codr"
+              data-bs-toggle="button"
+            >
+            Change Order
+            </button>
+          </div>
+      </div>
+
         <div class="col">
           <h5 class="text-center text-dark">
               <strong> Filter by: </strong>
@@ -10,9 +32,9 @@
         </div>
 
         <div class="col filterOptions">
-          <div class="btn-group" role="group">
+          <div class="btn-group right" role="group">
             <button
-              @click="sortBy = 'cid'"
+              @click="sortBy = 'cid', filter=true, filterPosts()"
               type="button"
               class="btn btn-warning CID"
               data-bs-toggle="button"
@@ -21,7 +43,7 @@
             </button>
 
             <button
-              @click="sortBy = 'prof'"
+              @click="sortBy = 'prof', filter=true, filterPosts()"
               type="button"
               class="btn btn-warning Prof"
               data-bs-toggle="button"
@@ -30,9 +52,9 @@
             </button>
 
             <button
-              @click="sortBy = 'rating'"
+              @click="sortBy = 'rating', filter=true, filterPosts()"
               type="button"
-              class="btn btn-warning dept"
+              class="btn btn-warning Rat"
               data-bs-toggle="button"
             >
               Rating
@@ -104,6 +126,13 @@ export default {
         console.log(error)
       })
     },
+    swapOrder(){
+      if (this.sortOrder == 0){
+        this.sortOrder = 1
+      } else {
+        this.sortOrder = 0;
+      }
+    }
   }
 }
 </script>
@@ -111,11 +140,19 @@ export default {
 <style scoped>
 @import '../assets/main.css';
 
+.right {
+  padding-left: 20px;
+}
+
+.left {
+  padding-right: 20px;
+}
+
 .filter {
   padding: 0;
 }
 
-button.btn.btn-warning.Prof, button.btn.btn-warning.CID {
+button.btn.btn-warning.Prof, button.btn.btn-warning.CID, button.btn.btn-warning.Clr, button.btn.btn-warning.Codr {
   border-right: 3px solid;
   border-right-color: var(--border-yellow);
 }
@@ -124,14 +161,14 @@ button.btn.btn-warning:focus {
   box-shadow: inset 0 -1px 0 #ddd;
 }
 
-.CID, .Prof, .dept
+.CID, .Prof, .Rat, .Clr, .Codr
 {
   background-color: var(--husky-yellow);
   border: none;
   transition: all 0.3s;
 }
 
-.CID:hover, .Prof:hover, .dept:hover {
+.CID:hover, .Prof:hover, .Rat:hover, .Clr:hover, .Codr:hover {
   color: white;
   background-color: var(--husky-yellow);
   opacity: 0.95;
@@ -190,7 +227,7 @@ input[type=search]:focus {
       width: 93vw;
     }
 
-    button.btn.btn-warning.dept {
+    button.btn.btn-warning.Rat {
       border-radius: 0 5px 0 0;
     }
 
@@ -210,7 +247,7 @@ input[type=search]:focus {
       display: none;
     }
 
-    button.btn.btn-warning.Prof, button.btn.btn-warning.CID, button.btn.btn-warning.dept {
+    button.btn.btn-warning.Prof, button.btn.btn-warning.CID, button.btn.btn-warning.Rat, button.btn.btn-warning.Clr, button.btn.btn-warning.Codr {
       border-bottom: 2px solid;
       border-bottom-color: var(--border-yellow);
     } 
