@@ -174,10 +174,6 @@ export default {
 <style>
     @import '../assets/main.css';
 
-    .review{
-        color: red;
-    }
-
     #formContent {
         padding: 4em;
     }
@@ -202,14 +198,14 @@ export default {
     #makeReview {
         background-color: var(--husky-yellow);
         color: var(--dark-back);
-        border: none;
+        border: 1px solid var(--husky-yellow);
         transition: all 0.3s;
         margin-top: 10px;
     }
 
     #makeReview:hover {
         color: white;
-        border-radius: 10px;
+        box-shadow: inset 0 -3.25em 0 0 rgb(73, 73, 73);
     }
 
     .row {
