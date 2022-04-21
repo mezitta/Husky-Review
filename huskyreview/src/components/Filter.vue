@@ -2,29 +2,6 @@
   <div class="container-fluid filter">
     <form>
       <div class="row row-cols-auto justify-content-center  align-items-center filterBorder">
-
-        <div class="col filterOptions">
-        <div class="btn-group left" role="group">
-            <button
-              @click="filter=false, sortOrder = 0, filterPosts()"
-              type="button"
-              class="btn btn-warning Clr"
-              data-bs-toggle="button"
-            >
-            Clear Filter
-            </button>
-
-            <button
-              @click="sortBy='', swapOrder(), filter=true, filterPosts()"
-              type="button"
-              class="btn btn-warning Codr"
-              data-bs-toggle="button"
-            >
-            Change Order
-            </button>
-          </div>
-      </div>
-
         <div class="col">
           <h5 class="text-center">
               <strong> Sort By: </strong>
