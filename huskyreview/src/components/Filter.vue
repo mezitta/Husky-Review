@@ -55,7 +55,7 @@
               @click="sortBy = 'rating'"
               v-if="sortBy === '_id' || sortBy != 'rating'"
               type="button"
-              class="btn btn-warning Rat"
+              class="btn btn-warning rat"
               data-bs-toggle="button"
             >
               Rating
@@ -71,6 +71,7 @@
               Rating
             </button>
           </div>
+
           <div class="input-group" id="mobileGroup">
             <input type="search"
             id="form1" 
@@ -93,9 +94,6 @@
             class="form-control shadow-none" 
             placeholder="Search Keyword"/>
           </div>
-          <!-- <button type="button" @click="filterPosts(); filter=true" class="btn btn-warning search">
-                Apply Filter
-          </button> -->
         </div>
 
         <div class="col applyFilter desktopGroup">
@@ -114,15 +112,15 @@
 
         <div class="col orderBy">
           <span v-if="descend" @click="descend=false; sortOrder=1; filterPosts()">
-          Order:
-          <i class="fa-solid fa-arrow-up-long"></i>
-          <i class="fa-solid fa-arrow-down-long"></i>
+            Order:
+            <i class="fa-solid fa-arrow-up-long"></i>
+            <i class="fa-solid fa-arrow-down-long"></i>
           </span>
 
           <span v-if="!descend" @click="descend=true; sortOrder=0; filterPosts()">
-          Order:
-          <i class="fa-solid fa-arrow-up-long"></i>
-          <i class="fa-solid fa-arrow-down-long"></i>
+            Order:
+            <i class="fa-solid fa-arrow-up-long"></i>
+            <i class="fa-solid fa-arrow-down-long"></i>
           </span>
         </div>
       </div>
@@ -204,7 +202,7 @@ button.btn.btn-warning:focus {
   box-shadow: inset 0 -1px 0 #ddd;
 }
 
-.CID, .Prof, .Rat, .Clr, .Codr
+.CID, .Prof, .rat, .Clr, .Codr
 {
   background: none;
   background-color: var(--husky-yellow);
@@ -276,7 +274,7 @@ input[type=search]:focus {
       width: 93vw;
     }
 
-    button.btn.btn-warning.Rat {
+    button.btn.btn-warning.rat {
       border-radius: 0 5px 0 0;
     }
 
@@ -296,7 +294,7 @@ input[type=search]:focus {
       display: none;
     }
 
-    button.btn.btn-warning.Prof, button.btn.btn-warning.CID, button.btn.btn-warning.dept {
+    button.btn.btn-warning.Prof, button.btn.btn-warning.CID, button.btn.btn-warning.rat {
       border-bottom: 2px solid var(--border-yellow);
     } 
 
