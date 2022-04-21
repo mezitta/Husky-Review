@@ -37,14 +37,6 @@
         <div class="row justify-content-center ratingText">Class Rating</div>
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
-                <!-- <select required v-model="addRating" id="rating">
-                    <option value="" disabled selected> Select Rating</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select> -->
                 <star-rating v-model:rating="addRating"
                     :increment='0.5'
                     active-color='#000000'
@@ -124,6 +116,7 @@ export default {
             }
             return text;
         },
+
         submitForm(e) {
             // Collect any regular HTML form input across entire page.
             const formData = new FormData(e.target);

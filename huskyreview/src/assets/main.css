@@ -2,6 +2,7 @@
     --husky-yellow: rgb(252,206,1);
     --hover-yellow: rgb(255, 216, 43);
     --border-yellow: rgb(241, 197, 0);
+    --trans-yellow: rgba(252,206,1, 0.5);
     
     /* Background Colors */
     --dark-back: rgb(29, 29, 29);

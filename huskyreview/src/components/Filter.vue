@@ -4,17 +4,29 @@
       <div class="row row-cols-auto justify-content-center  align-items-center filterBorder">
 
         <div class="col">
-          <h5 class="text-center text-dark">
-              <strong> Filter by: </strong>
+          <h5 class="text-center">
+              <strong> Sort By: </strong>
           </h5>
         </div>
 
         <div class="col filterOptions">
           <div class="btn-group" role="group">
+            
             <button
-              @click="sortBy = 'cid'"
+              @click="sortBy = 'class_id'"
+              v-if="sortBy === '_id' || sortBy != 'class_id'"
               type="button"
               class="btn btn-warning CID"
+              data-bs-toggle="button"
+            >
+              Class ID
+            </button>
+            
+            <button
+              @click="sortBy = '_id'"
+              v-if="sortBy === 'class_id'"
+              type="button"
+              class="btn btn-warning CID filterChecked"
               data-bs-toggle="button"
             >
               Class ID
@@ -22,6 +34,7 @@
 
             <button
               @click="sortBy = 'prof'"
+              v-if="sortBy === '_id' || sortBy != 'prof'"
               type="button"
               class="btn btn-warning Prof"
               data-bs-toggle="button"
@@ -30,9 +43,30 @@
             </button>
 
             <button
+              @click="sortBy = '_id'"
+              v-if="sortBy === 'prof'"
+              type="button"
+              class="btn btn-warning CID filterChecked"
+              data-bs-toggle="button"
+            >
+              Professor
+            </button>
+
+            <button
               @click="sortBy = 'rating'"
+              v-if="sortBy === '_id' || sortBy != 'rating'"
               type="button"
               class="btn btn-warning dept"
+              data-bs-toggle="button"
+            >
+              Rating
+            </button>
+
+            <button
+              @click="sortBy = '_id'"
+              v-if="sortBy === 'rating'"
+              type="button"
+              class="btn btn-warning CID filterChecked"
               data-bs-toggle="button"
             >
               Rating
@@ -44,25 +78,53 @@
             v-model="searchFilter" 
             v-on:input="(event) => this.$emit('inputChange', event)"
             class="form-control" 
-            placeholder="Search Reviews"/>
+            placeholder="Search Keyword"/>
             <button type="button" @click="filterPosts(); filter=true" class="btn btn-warning search">
-              Search
+                Apply Filter
             </button>
           </div>
         </div>
 
         <div class="col filterOptions">
-          <div class="input-group" id="desktopGroup">
+          <div class="input-group desktopGroup" id="desktopGroup">
             <input type="search"
             id="form1" 
             v-model="searchFilter" 
             v-on:input="(event) => this.$emit('inputChange', event)"
             class="form-control shadow-none" 
-            placeholder="Search Reviews"/>
-            <button type="button" @click="filterPosts(); filter=true" class="btn btn-warning search">
-                Search
-            </button>
+            placeholder="Search Keyword"/>
           </div>
+          <!-- <button type="button" @click="filterPosts(); filter=true" class="btn btn-warning search">
+                Apply Filter
+          </button> -->
+        </div>
+
+        <div class="col applyFilter desktopGroup">
+          <button type="button" @click="filterPosts(); filter=true" class="btn btn-warning search ">
+                Apply Filter
+          </button>
+        </div>
+      </div>
+
+      <div  class="row d-flex justify-content-center align-items-center filterAdjustments">
+        <div class="col clearFilter">
+          <a @click="filter=false; sortOrder=0; sortBy='_id'; searchFilter=''; filterPosts()">
+                <i class="fa-solid fa-filter"></i> Clear Filter
+          </a>
+        </div>
+
+        <div class="col orderBy">
+          <span v-if="descend" @click="descend=false; sortOrder=1; filterPosts()">
+          Order:
+          <i class="fa-solid fa-arrow-up-long"></i>
+          <i class="fa-solid fa-arrow-down-long"></i>
+          </span>
+
+          <span v-if="!descend" @click="descend=true; sortOrder=0; filterPosts()">
+          Order:
+          <i class="fa-solid fa-arrow-up-long"></i>
+          <i class="fa-solid fa-arrow-down-long"></i>
+          </span>
         </div>
       </div>
     </form>
@@ -79,8 +141,9 @@ export default {
   data() {
     return {
       searchFilter: '',
-      sortBy: '',
+      sortBy: '_id',
       sortOrder: 0,
+      descend: true,
       filteredResults: [],
       filter: false,
     }
@@ -95,15 +158,15 @@ export default {
         }
       }).then (response => {
         this.filteredResults = response.data
-        this.testResults = response.data
-        this.$emit('changeValue', this.testResults)
+        this.$emit('changeValue', this.filteredResults)
         this.$emit('toggleFilter', this.filter)
-        console.log(this.filter)
-        // console.log(this.filteredResults)
       }).catch((error) => {
         console.log(error)
       })
     },
+  },
+  created () {
+    this.filterPosts()
   }
 }
 </script>
@@ -111,13 +174,31 @@ export default {
 <style scoped>
 @import '../assets/main.css';
 
-.filter {
-  padding: 0;
+.orderBy:hover, .clearFilter:hover {
+  cursor: pointer;
 }
 
-button.btn.btn-warning.Prof, button.btn.btn-warning.CID {
-  border-right: 3px solid;
-  border-right-color: var(--border-yellow);
+.clearFilter {
+  text-decoration: none;
+  text-align: right;
+  padding-right: 50px;
+}
+
+.orderBy {
+  text-align: left;
+}
+
+.orderBy, .clearFilter {
+  font-weight: bold;
+  color: var(--main-back);
+}
+
+.filter {
+  padding: 0;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+  color: #fff;
+	text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15);
 }
 
 button.btn.btn-warning:focus {
@@ -126,15 +207,17 @@ button.btn.btn-warning:focus {
 
 .CID, .Prof, .dept
 {
+  background: none;
   background-color: var(--husky-yellow);
-  border: none;
-  transition: all 0.3s;
+  border: 1px solid var(--husky-yellow);
+  transition: all 0.4s;
 }
 
-.CID:hover, .Prof:hover, .dept:hover {
+.CID:hover, .Prof:hover, .dept:hover,
+.CID:focus, .Prof:focus, .dept:focus,
+.search:hover {
   color: white;
-  background-color: var(--husky-yellow);
-  opacity: 0.95;
+  box-shadow: inset 0 -3.25em 0 0 rgb(73, 73, 73);
 }
 
 .search {
@@ -144,16 +227,11 @@ button.btn.btn-warning:focus {
   transition: all 0.3s;
 }
 
-.search:hover {
-  background-color: var(--husky-yellow);
-  color: white;
-}
-
 .filterBorder {
   padding-bottom: 5px;
-  padding-top: 5px;
+  padding-top: 10px;
   margin-left: 0;
-  box-shadow: 0px 5px 5px var(--main-back-dark);
+  margin-bottom: 5px;
   width: 100%;
 }
 
@@ -179,6 +257,14 @@ input[type=search]:focus {
     .filterOptions {
       padding: 0;
     }
+
+    .filterBorder {
+      padding-top: 5px;
+    }
+
+    .applyFilter {
+      margin-top: 10px;
+    }
     
     h5 {
       font-size: 0.1em;
@@ -186,7 +272,8 @@ input[type=search]:focus {
       visibility: hidden;
     }
 
-    .btn-group {
+    .btn-group,
+    #mobileGroup.input-group {
       width: 93vw;
     }
 
@@ -206,14 +293,25 @@ input[type=search]:focus {
       border-radius: 0 0 0 5px;
     }
 
-    #desktopGroup {
+    .desktopGroup {
       display: none;
     }
 
     button.btn.btn-warning.Prof, button.btn.btn-warning.CID, button.btn.btn-warning.dept {
-      border-bottom: 2px solid;
-      border-bottom-color: var(--border-yellow);
+      border-bottom: 2px solid var(--border-yellow);
     } 
+
+    .search {
+      border-radius: 0 0 5px 0;
+    }
 }
 
+.filterAdjustments {
+  padding-bottom: 5px;
+}
+
+.filterChecked {
+  color: white;
+  background-color: rgb(73, 73, 73);
+}
 </style>

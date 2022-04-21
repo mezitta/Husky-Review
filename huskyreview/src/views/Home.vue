@@ -20,8 +20,12 @@
                     </div>
                 </div>
             </div>
+           <Filter ref="filterbar"
+                @changeValue="updateFilter" 
+                @toggleFilter="updateToggle" 
+            /> 
         </div>
-        <Filter ref="filterbar" @changeValue="updateFilter" @toggleFilter="updateToggle"/>
+        
         <Reviews :filteredReviews="reviewResults" :filter="filterToggle"/>
     </div>
 </template>
@@ -42,17 +46,18 @@
         data() {
             return {
                 reviewResults: [],
-                filterToggle: false
+                filterToggle: false,
+                order: 0
             }
         },
         methods: {
-            updateFilter(testResults) {
-                this.reviewResults = testResults
+            updateFilter(filterResults) {
+                this.reviewResults = filterResults
             },
 
             updateToggle(toggle) {
                 this.filterToggle = toggle;
-            }
+            },
         },
     };
 </script>
@@ -74,15 +79,14 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-        /* opacity: 0.5; */
     }
 
     .shareFont {
         font-size: 2.1em;
         font-weight: bold;
         margin-bottom: 2vh;
-        color: var(--main-back);
-        text-shadow: 0 0 0.25em black;
+        color: #fff;
+        text-shadow: 0px 1px 0px var(--main-back), 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
     }
 
     .logoRow {
@@ -95,7 +99,6 @@
 
     #createComp {
         text-align: center;
-        /* margin-top: 3vh; */
     }
 
     #makeHomeReview {
@@ -104,25 +107,26 @@
         margin-bottom: 10%;
 
         background-color: var(--husky-yellow);
-        color: var(--dark-back);
+        color: black;
 
         font-size: 1.8rem;
         font-weight: bold;
         
-        border: none;
+        border: 2px solid var(--husky-yellow);
         border-radius: 40px;
         
-        transition: all 0.3s;
+        transition: all 0.4s;
     }
 
     @media only screen and (max-width: 600px) {
         #makeHomeReview {
             width: 100%;
             background-color: var(--husky-yellow);
-            font-size: 0.95em;
+            font-size: 0.9em;
             font-weight: bold;
-            color: var(--dark-back);
-            border: none;
+            color: black;
+            border: 1px var(--husky-yellow);
+            border: 1px solid var(--husky-yellow);
             padding: 0.5em;
             border-radius: 40px;
             transition: all 0.3s;
@@ -158,6 +162,7 @@
 
     #makeHomeReview:hover {
         color: white;
-        opacity: 0.95;
+        box-shadow: inset 0 0 0 2em rgb(73, 73, 73);
+        opacity: 1;
     }
 </style>

@@ -1,18 +1,5 @@
 <template>
-    <div v-if="!filter" class="cards" id='holder'>
-        <span v-for="review in reviews" :key="review.class_id">
-            <Card 
-                :cardTitle="review.title"
-                :cardRating="review.rating" 
-                :cardClassName="review.class_name" 
-                :cardClassId="review.class_id" 
-                :cardProfName="review.prof"
-                :cardBody="review.body"
-            />
-        </span>
-    </div>
-
-    <div v-if="filter" class="cards" id='holder'>
+    <div class="cards" id='holder'>
         <span  v-for="review in filteredReviews" :key="review.class_id">
             <Card 
                 :cardTitle="review.title"
