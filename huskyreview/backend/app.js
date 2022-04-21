@@ -5,6 +5,7 @@ let express = require('express'),
     bodyParser = require('body-parser'),
     createError = require('http-errors'),
     CourseModel = require('./models/course'),
+    mongoSanitize = require('express-mongo-sanitize'),
     { getAllSections } = require('@mtucourses/scraper');
 
 //Connect mongoDB
@@ -28,7 +29,7 @@ mongoose.connect(database.db, {
             courses.forEach((course) => {
                 CourseModel.create({
                     class_id: course.subject + course.crse,
-                    title: course.title
+                    class_name: course.title
                 });
             });
         }
@@ -45,6 +46,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cors());
+app.use(mongoSanitize());
 
 //API
 app.use('/api', reviewtoEndPoint)

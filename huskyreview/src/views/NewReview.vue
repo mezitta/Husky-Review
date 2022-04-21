@@ -16,7 +16,7 @@
         <form v-on:submit.prevent="submitForm" v-if="!submitSuccess">
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
-                <input type="text" placeholder="Class ID" required v-model="addClassId" id="classId">
+                <input type="text" placeholder="Class ID (e.g. CS3141)" required v-model="addClassId" id="classId">
             </div>
         </div>
         <div class="row justify-content-center">
@@ -47,9 +47,9 @@
         <div class="row justify-content-center captchaContainer">
             <CaptchaContainer :key="reloadCaptcha" />
         </div>
-		<div class="row justify-content-center" style="color:red" v-if="!captchaSuccess">
-			Invalid response. Please try again.
-		</div>
+        <div class="row justify-content-center" style="color:red" v-if="!captchaSuccess">
+            Invalid response or Class ID. Please try again.
+        </div>
         <div class="row justify-content-center">
             <div class="col-sm-5 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary" id="makeReview">Create Review</button>
@@ -85,12 +85,11 @@ export default {
             countdownText: '',
             timeleft: 10,
             reloadCaptcha: 0,
-			captchaSuccess: true
+            captchaSuccess: true
         }
     },
     methods: {
         cleanText(text, badWords) {
-            const badWords = ["bad", "word"]
             let replacement = "";
             let textLower = text.toLowerCase()
             let same = true;
@@ -126,9 +125,10 @@ export default {
             //xmlhttp.send();
             //xmlhttp.responseType = 'text';
             //const badWords = xmlhttp.responseText.toLowerCase().split(",");
+            const badWords = ["bad", "word"];
 
-            this.addBody = this.cleanText(this.addBody);
-            this.addTitle = this.cleanText(this.addTitle);
+            this.addBody = this.cleanText(this.addBody, badWords);
+            this.addTitle = this.cleanText(this.addTitle, badWords);
             axios.post('http://' + destination.ip + ':4000/api/add-review', {
                 title:  this.addTitle,
                 prof:   this.addProf,
@@ -152,7 +152,7 @@ export default {
                 // Regenerate CAPTCHA after failure invalidates session.
                 this.reloadCaptcha += 1;
                 console.log(error)
-				this.captchaSuccess = false;
+                this.captchaSuccess = false;
             })
         },
 

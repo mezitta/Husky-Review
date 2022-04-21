@@ -1,11 +1,12 @@
 const axios = require('axios').default;
-const destination = require('../destination.js');
 const express = require('express');
 const { nextTick } = require('vue');
 const reviewRoute = express.Router();
+// Forestall overly recursive regular expressions.
+const safe = require('safe-regex');
 
 //let api_url = 'https://captcheck.netsyms.com/api.php';
-let api_url = 'http://' + destination.ip + '/api.php';
+let api_url = 'http://localhost/api.php';
 let CourseModel = require('../models/course');
 let ReviewModel = require('../models/review');
 
@@ -17,7 +18,7 @@ reviewRoute.route('/').get((req, res, next) => {
     let reverse = '-';
     let sort = '_id';
     // Prepare request.
-    if (req.query.q) {
+    if (req.query.q && safe(req.query.q)) {
         // Use same options for each field.
         let search = {
             $regex: req.query.q,
@@ -51,7 +52,6 @@ reviewRoute.route('/').get((req, res, next) => {
     })
 })
 
-// TODO: Return class_name to client for real-time display.
 reviewRoute.route('/add-review').post(async (req, res, next) => {
     if (req.body.captcheck_selected_answer === null) {
         // Prevent spurious request if no answer is selected.
@@ -62,6 +62,7 @@ reviewRoute.route('/add-review').post(async (req, res, next) => {
         postBody.append('session_id', req.body.captcheck_session_code)
         postBody.append('answer_id', req.body.captcheck_selected_answer)
         postBody.append('action', "verify")
+        // Verify CAPTCHA.
         const captcha = await axios.post(api_url, postBody, {
             'headers': {
                 'Content-Type':'application/x-www-form-urlencoded'
@@ -85,7 +86,7 @@ reviewRoute.route('/add-review').post(async (req, res, next) => {
                         res.status(400).send('"' + review.class_id + '" is not a class ID we recognize.');
                     } else {
                         // Use canonical name.
-                        review.class_name = course.title;
+                        review.class_name = course.class_name;
                         ReviewModel.create(review, (error, data) => {
                             if (error) {
                                 return next(error);

@@ -3,6 +3,28 @@
     <form>
       <div class="row row-cols-auto justify-content-center  align-items-center filterBorder">
 
+        <div class="col filterOptions">
+        <div class="btn-group left" role="group">
+            <button
+              @click="filter=false, sortOrder = 0, filterPosts()"
+              type="button"
+              class="btn btn-warning Clr"
+              data-bs-toggle="button"
+            >
+            Clear Filter
+            </button>
+
+            <button
+              @click="sortBy='', swapOrder(), filter=true, filterPosts()"
+              type="button"
+              class="btn btn-warning Codr"
+              data-bs-toggle="button"
+            >
+            Change Order
+            </button>
+          </div>
+      </div>
+
         <div class="col">
           <h5 class="text-center">
               <strong> Sort By: </strong>
@@ -56,7 +78,7 @@
               @click="sortBy = 'rating'"
               v-if="sortBy === '_id' || sortBy != 'rating'"
               type="button"
-              class="btn btn-warning dept"
+              class="btn btn-warning Rat"
               data-bs-toggle="button"
             >
               Rating
@@ -205,7 +227,7 @@ button.btn.btn-warning:focus {
   box-shadow: inset 0 -1px 0 #ddd;
 }
 
-.CID, .Prof, .dept
+.CID, .Prof, .Rat, .Clr, .Codr
 {
   background: none;
   background-color: var(--husky-yellow);
@@ -277,7 +299,7 @@ input[type=search]:focus {
       width: 93vw;
     }
 
-    button.btn.btn-warning.dept {
+    button.btn.btn-warning.Rat {
       border-radius: 0 5px 0 0;
     }
 

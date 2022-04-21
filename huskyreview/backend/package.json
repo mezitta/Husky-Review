@@ -9,10 +9,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mtucourses/scraper": "^3.0.0",
     "axios": "^0.26.1",
     "body-parser": "^1.19.2",
     "cors": "^2.8.5",
     "express": "^4.17.3",
-    "mongoose": "^6.2.3"
+    "express-mongo-sanitize": "^2.2.0",
+    "mongoose": "^6.2.3",
+    "safe-regex": "^2.1.1"
   }
 }
