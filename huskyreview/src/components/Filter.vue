@@ -12,7 +12,7 @@
           <div class="btn-group" role="group">
             
             <button
-              @click="sortBy = 'class_id'"
+              @click="sortBy = 'class_id'; filterPosts()"
               v-if="sortBy === '_id' || sortBy != 'class_id'"
               type="button"
               class="btn btn-warning CID"
@@ -22,17 +22,17 @@
             </button>
             
             <button
-              @click="sortBy = '_id'"
+              @click="sortBy = '_id'; filterPosts()"
               v-if="sortBy === 'class_id'"
               type="button"
-              class="btn btn-warning CID filterChecked"
+              class="btn btn-warning filterChecked"
               data-bs-toggle="button"
             >
               Class ID
             </button>
 
             <button
-              @click="sortBy = 'prof'"
+              @click="sortBy = 'prof'; filterPosts()"
               v-if="sortBy === '_id' || sortBy != 'prof'"
               type="button"
               class="btn btn-warning Prof"
@@ -42,17 +42,17 @@
             </button>
 
             <button
-              @click="sortBy = '_id'"
+              @click="sortBy = '_id'; filterPosts()"
               v-if="sortBy === 'prof'"
               type="button"
-              class="btn btn-warning CID filterChecked"
+              class="btn btn-warning filterChecked"
               data-bs-toggle="button"
             >
               Professor
             </button>
 
             <button
-              @click="sortBy = 'rating'"
+              @click="sortBy = 'rating'; filterPosts()"
               v-if="sortBy === '_id' || sortBy != 'rating'"
               type="button"
               class="btn btn-warning rat"
@@ -62,10 +62,10 @@
             </button>
 
             <button
-              @click="sortBy = '_id'"
+              @click="sortBy = '_id'; filterPosts()"
               v-if="sortBy === 'rating'"
               type="button"
-              class="btn btn-warning CID filterChecked"
+              class="btn btn-warning filterChecked"
               data-bs-toggle="button"
             >
               Rating
@@ -79,8 +79,8 @@
             v-on:input="(event) => this.$emit('inputChange', event)"
             class="form-control" 
             placeholder="Search Keyword"/>
-            <button type="button" @click="filterPosts(); filter=true" class="btn btn-warning search">
-                Apply Filter
+            <button type="button" @click="filter=true; filterPosts()" class="btn btn-warning search">
+                Search
             </button>
           </div>
         </div>
@@ -93,33 +93,30 @@
             v-on:input="(event) => this.$emit('inputChange', event)"
             class="form-control shadow-none" 
             placeholder="Search Keyword"/>
+            <button type="button" @click="filter=true; filterPosts()" class="btn btn-warning search ">
+                Search
+            </button>
           </div>
-        </div>
-
-        <div class="col applyFilter desktopGroup">
-          <button type="button" @click="filterPosts(); filter=true" class="btn btn-warning search ">
-                Apply Filter
-          </button>
         </div>
       </div>
 
       <div  class="row d-flex justify-content-center align-items-center filterAdjustments">
         <div class="col clearFilter">
-          <a @click="filter=false; sortOrder=0; sortBy='_id'; searchFilter=''; filterPosts()">
+          <a @click="filter=false; sortOrder=0; sortBy='_id'; searchFilter=''; descend=true;filterPosts()" class="adjText">
                 <i class="fa-solid fa-filter"></i> Clear Filter
           </a>
         </div>
 
         <div class="col orderBy">
-          <span v-if="descend" @click="descend=false; sortOrder=1; filterPosts()">
+          <span v-if="descend" @click="descend=false; sortOrder=1; filterPosts()" class="adjText">
             Order:
             <i class="fa-solid fa-arrow-up-long"></i>
-            <i class="fa-solid fa-arrow-down-long"></i>
+            <span class="orderArrow"><i class="fa-solid fa-arrow-down-long"></i></span>
           </span>
 
-          <span v-if="!descend" @click="descend=true; sortOrder=0; filterPosts()">
+          <span v-if="!descend" @click="descend=true; sortOrder=0; filterPosts()" class="adjText">
             Order:
-            <i class="fa-solid fa-arrow-up-long"></i>
+            <span class="orderArrow"><i class="fa-solid fa-arrow-up-long"></i></span>
             <i class="fa-solid fa-arrow-down-long"></i>
           </span>
         </div>
@@ -193,8 +190,9 @@ export default {
 .filter {
   padding: 0;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
-  color: #fff;
-	text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
+  color: var(--main-back);
+  /* color: #fff;
+	text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135; */
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15);
 }
 
@@ -210,8 +208,8 @@ button.btn.btn-warning:focus {
   transition: all 0.4s;
 }
 
-.CID:hover, .Prof:hover, .dept:hover,
-.CID:focus, .Prof:focus, .dept:focus,
+.CID:hover, .Prof:hover, .rat:hover,
+.CID:focus, .Prof:focus, .rat:focus,
 .search:hover {
   color: white;
   box-shadow: inset 0 -3.25em 0 0 rgb(73, 73, 73);
@@ -243,6 +241,7 @@ input[type=search]:focus {
 @media only screen and (min-width: 600px) {
   h5 {
     margin: 0;
+    text-shadow: rgb(73, 73, 73) 1px 0 10px;
   }
 
   #mobileGroup {
@@ -307,8 +306,23 @@ input[type=search]:focus {
   padding-bottom: 5px;
 }
 
-.filterChecked {
+.filterChecked, .filterChecked:hover {
   color: white;
   background-color: rgb(73, 73, 73);
 }
+
+.adjText {
+  text-decoration: none;
+  color: var(--main-back);
+  transition: all 0.3s;
+}
+
+.adjText:hover {
+  color:var(--husky-yellow);;
+}
+
+.orderArrow {
+  color: var(--husky-yellow);
+}
+
 </style>
