@@ -7,7 +7,7 @@ git submodule init && git submodule update
 cd Captcheck && composer install && cd ..
 
 # Force refresh of Banweb data.
-mongo --eval "db.courses.deleteMany({})" huskyreview
+./clear_courses.sh
 
 echo "Configuring web server and databases..."
 # Don't set 'root password', but accept other defaults.
