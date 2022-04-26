@@ -29,13 +29,13 @@ authorization from Netsyms Technologies.
 </template>
 
 <script>
-import { destination } from '../destination.js';
+// import { destination } from '../destination.js';
 export default {
     methods: {
         makeCaptcha() {
 
-            //let api_url = "https://captcheck.netsyms.com/api.php";
-            let api_url = "http://" + destination.ip + "/api.php";
+            let api_url = "https://captcheck.netsyms.com/api.php";
+            // let api_url = "http://" + destination.ip + "/api.php";
 
             function chooseAnswer(idp, ans) {
                 let box = document.getElementById("captcheck_" + idp + "_answer_" + ans);

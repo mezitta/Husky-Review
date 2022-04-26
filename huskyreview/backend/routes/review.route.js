@@ -5,8 +5,8 @@ const reviewRoute = express.Router();
 // Forestall overly recursive regular expressions.
 const safe = require('safe-regex');
 
-//let api_url = 'https://captcheck.netsyms.com/api.php';
-let api_url = 'http://localhost/api.php';
+let api_url = 'https://captcheck.netsyms.com/api.php';
+// let api_url = 'http://localhost/api.php';
 let CourseModel = require('../models/course');
 let ReviewModel = require('../models/review');
 
